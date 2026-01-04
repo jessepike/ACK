@@ -1,17 +1,18 @@
 ---
-doc_id: "spec-002"
-slug: "adr-yaml-schema"
-title: "ADR Canonical Record Schema (YAML)"
-type: "schema"
-tier: "tier1"
-status: "active"
-authority: "binding"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
+type: schema
+description: "ADR canonical record schema (YAML)"
+version: 0.1.0
+updated: 2026-01-01
+status: active
 depends_on: []
+doc_id: spec-002
+slug: adr-yaml-schema
+title: "ADR Canonical Record Schema (YAML)"
+tier: tier1
+authority: binding
+review_status: draft
+created: 2026-01-01
+owner: human
 ---
 
 # ADR canonical record schema (YAML)

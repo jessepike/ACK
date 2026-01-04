@@ -1,20 +1,17 @@
 ---
-name: github
+type: skill
 description: >
-  GitHub workflow procedures for repository management, pull requests, issues, 
-  and Actions CI/CD. Use when performing GitHub operations, setting up repos,
-  configuring workflows, or managing PRs and issues.
-
-doc_id: "skill-004"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-02"
-updated: "2026-01-02"
-owner: "human"
+version: 0.1.0
+updated: 2026-01-02
+status: active
 depends_on: []
+name: github
+doc_id: skill-004
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-02
+owner: human
 ---
 
 # GitHub Skill

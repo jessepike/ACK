@@ -1,7 +1,9 @@
 ---
-name: railway
-description: Railway deployment and troubleshooting procedures
+type: skill
+description: "Railway deployment and troubleshooting procedures"
 version: 1.0.0
+updated: "2026-01-04T09:26:12"
+name: railway
 ---
 
 # Railway Deployment Skill

@@ -1,197 +1,141 @@
-# Context Schema: ACK
+---
+type: artifact
+stage: design
+artifact: context-schema
+description: "Agent context structure, operations, and injection strategy"
+version: 1.0.0
+updated: "2026-01-04T09:26:12"
+status: draft
+---
 
----
-status: "Draft"
-created: 2025-01-01
-author: "jess@pike"
-stage: "design"
----
+# [Project Name] - Context Schema
 
 ## Overview
 
-<!-- 
-How do agents understand ACK state?
-- What context do agents see?
-- How is context structured?
-- How do agents reference/modify context?
--->
+<!-- How do agents understand system state? -->
 
 **Goal:** Define a structured way for AI agents to:
-1. Read current project/artifact state
-2. Target specific sections for updates
-3. Understand relationships between artifacts
+1. Read current project/system state
+2. Target specific resources for updates
+3. Understand relationships between entities
 4. Make informed suggestions
 
+**Key principle:** [Guiding principle for context design]
 
-**Key principle:** Agents should have enough context to be helpful, but not so much they get overwhelmed.
-
-
+---
 
 ## Context Structure
 
-<!-- 
-What information is available to agents?
-- Hierarchy
-- Metadata
-- Content access
--->
+<!-- What information is available to agents? -->
 
 ### Full Context Schema
 
 ```typescript
 interface AgentContext {
-  project: ProjectContext;
-  currentArtifact: ArtifactContext;
-  relatedArtifacts: ArtifactContext[];
-  chatHistory: MessageContext[];
-  systemState: SystemState;
+  [contextKey]: [ContextType];
+  [contextKey]: [ContextType];
+  [contextKey]: [ContextType];
+  [contextKey]: [ContextType];
 }
 ```
 
-### Project Context
+### [Context Component 1]
 
 ```typescript
-interface ProjectContext {
+interface [ComponentName]Context {
   id: string;
-  name: string;
-  description: string;
-  current_stage: StageType;
-  
-  // Stage progress summary
-  stages: {
-    [stage: string]: {
-      artifacts_total: number;
-      artifacts_finalized: number;
-      sections_complete: number;
-      sections_total: number;
-      progress_pct: number;
-    }
+  [field]: [type];
+  [field]: [type];
+
+  // [Category of fields]
+  [field]: {
+    [subfield]: [type];
+    [subfield]: [type];
   };
-  
-  created_at: Date;
-  updated_at: Date;
 }
 ```
 
 **Example:**
 ```json
 {
-  "project": {
-    "id": "abc123",
-    "name": "ack-demo",
-    "current_stage": "discovery",
-    "stages": {
-      "discovery": {
-        "artifacts_total": 4,
-        "artifacts_finalized": 2,
-        "sections_complete": 9,
-        "sections_total": 17,
-        "progress_pct": 52.9
-      }
-    }
+  "[contextKey]": {
+    "id": "[example-id]",
+    "[field]": "[value]"
   }
 }
 ```
 
 
-### Artifact Context
+### [Context Component 2]
 
 ```typescript
-interface ArtifactContext {
+interface [ComponentName]Context {
   id: string;
-  name: string;
-  slug: string;
-  stage: StageType;
-  status: 'draft' | 'finalized';
-  
-  // Section structure (metadata only, not content)
-  sections: {
-    slug: string;
-    title: string;
-    is_done: boolean;
-    is_collapsed: boolean;
-    order: number;
-    // Content excerpt for context (first 200 chars)
-    preview?: string;
+  [field]: [type];
+
+  // [Description]
+  [field]: {
+    [subfield]: [type];
+    [subfield]: [type];
   }[];
-  
-  // Full content (only for current artifact)
-  content?: string;  // Markdown representation
-  
-  sections_complete: number;
-  sections_total: number;
-  updated_at: Date;
+
+  // [Description]
+  [field]?: [type];
 }
 ```
 
 **Example:**
 ```json
 {
-  "currentArtifact": {
-    "name": "concept.md",
-    "slug": "concept",
-    "status": "draft",
-    "sections": [
+  "[contextKey]": {
+    "[field]": "[value]",
+    "[arrayField]": [
       {
-        "slug": "what-is-it",
-        "title": "What Is It?",
-        "is_done": true,
-        "preview": "ACK (Agent Context Kit) is a planning layer..."
-      },
-      {
-        "slug": "problem-being-solved",
-        "title": "Problem Being Solved",
-        "is_done": false,
-        "preview": null
+        "[subfield]": "[value]"
       }
-    ],
-    "content": "# Project Concept: ACK\n\n## What Is It?\n\n..."
+    ]
   }
 }
 ```
 
-
+---
 
 ## Context Injection Strategy
 
-<!-- 
-When and how to inject context into agent prompts:
-- Full context vs. selective
-- Token budget management
-- Context relevance
--->
+<!-- When and how to inject context into agent prompts -->
 
 ### Context Levels
 
-**Level 1: Minimal (Free chat)**
-- Project name and stage
-- Current artifact name
-- No content
+**Level 1: Minimal**
+- [What's included]
+- [What's included]
+- Use case: [When to use]
 
-**Level 2: Standard (Section targeting)**
-- Project summary
-- Current artifact structure (section list)
-- Specific section content if referenced
+**Level 2: Standard**
+- [What's included]
+- [What's included]
+- [What's included]
+- Use case: [When to use]
 
-**Level 3: Full (Deep analysis)**
+**Level 3: Full**
 - All Level 2 info
-- Full current artifact content
-- Related artifacts (summaries)
+- [Additional info]
+- [Additional info]
+- Use case: [When to use]
 
 
 ### Token Budget Allocation
 
-**Assuming 200k token context window:**
+**Assuming [X]k token context window:**
 
 | Component | Tokens | Allocation |
 |-----------|--------|------------|
-| System prompt | 2k | 1% |
-| Project context | 1k | 0.5% |
-| Current artifact | 10k | 5% |
-| Related artifacts | 5k | 2.5% |
-| Chat history | 20k | 10% |
-| Agent response | 20k | 10% |
-| **Reserve** | **142k** | **71%** |
+| System prompt | [X]k | [X]% |
+| [Context 1] | [X]k | [X]% |
+| [Context 2] | [X]k | [X]% |
+| [Context 3] | [X]k | [X]% |
+| Agent response | [X]k | [X]% |
+| **Reserve** | **[X]k** | **[X]%** |
 
 
 ### Selective Context Loading
@@ -199,74 +143,62 @@ When and how to inject context into agent prompts:
 **Rules for what to include:**
 
 1. **Always include:**
-   - Project name and stage
-   - Current artifact name and status
-   - Section list (titles + done states)
+   - [Required context]
+   - [Required context]
+   - [Required context]
 
 2. **Include if referenced:**
-   - Specific section content
-   - Related artifact summaries
-   - Previous snapshots
+   - [Conditional context]
+   - [Conditional context]
 
 3. **Never include:**
-   - Deleted content
-   - Other users' private notes
-   - System internals
+   - [Excluded context]
+   - [Excluded context]
 
-
+---
 
 ## Agent Operations
 
-<!-- 
-How do agents modify ACK state?
-- Supported operations
-- Operation format
-- Validation
--->
+<!-- How do agents modify system state? -->
 
 ### Supported Operations
 
-**1. Update Section Content**
+**1. [Operation Name]**
 ```json
 {
-  "operation": "update_section",
-  "artifact_slug": "concept",
-  "section_slug": "what-is-it",
-  "content": "Updated content here...",
-  "reason": "Clarified definition based on research"
+  "operation": "[operation_type]",
+  "[field]": "[value]",
+  "[field]": "[value]",
+  "reason": "[Why this change]"
 }
 ```
 
-**2. Mark Section Done**
+**2. [Operation Name]**
 ```json
 {
-  "operation": "mark_section_done",
-  "artifact_slug": "concept",
-  "section_slug": "problem-being-solved",
-  "is_done": true
+  "operation": "[operation_type]",
+  "[field]": "[value]",
+  "[field]": [boolean]
 }
 ```
 
-**3. Create New Section**
+**3. [Operation Name]**
 ```json
 {
-  "operation": "create_section",
-  "artifact_slug": "concept",
-  "after_section": "core-features",
-  "title": "Technical Requirements",
-  "content": "...",
-  "order": 4
+  "operation": "[operation_type]",
+  "[field]": "[value]",
+  "[field]": "[value]",
+  "[field]": [number]
 }
 ```
 
-**4. Suggest Edit**
+**4. [Operation Name]**
 ```json
 {
-  "operation": "suggest_edit",
-  "artifact_slug": "research",
-  "section_slug": "competitive-analysis",
-  "suggestion": "Add comparison of pricing models",
-  "rationale": "User asked about pricing validation"
+  "operation": "[operation_type]",
+  "[field]": "[value]",
+  "suggestion": "[Suggested change]",
+  "rationale": "[Why suggested]"
 }
 ```
 
@@ -274,47 +206,39 @@ How do agents modify ACK state?
 ### Operation Validation
 
 **Before applying:**
-1. Verify artifact exists
-2. Verify section exists (for updates)
-3. Check artifact is not finalized (unless override)
-4. Validate content structure
-5. Create snapshot
-
+1. [Validation step]
+2. [Validation step]
+3. [Validation step]
+4. [Validation step]
 
 **After applying:**
-1. Update section_metadata
-2. Recalculate sections_complete
-3. Log operation in messages
-4. Trigger UI update
+1. [Post-operation step]
+2. [Post-operation step]
+3. [Post-operation step]
 
-
+---
 
 ## Agent Targeting Syntax
 
-<!-- 
-How do users reference sections in chat?
-- Natural language
-- Structured syntax
-- Ambiguity resolution
--->
+<!-- How do users reference resources in chat? -->
 
 ### Natural Language Examples
 
-**User:** "Update the problem statement"
+**User:** "[Example user input]"
 **Agent parses:**
 ```json
 {
-  "artifact": "concept",  // inferred from context
-  "section": "problem-being-solved"  // matched by title
+  "[field]": "[inferred value]",
+  "[field]": "[matched value]"
 }
 ```
 
-**User:** "Fix the competitive analysis in research.md"
+**User:** "[Example user input]"
 **Agent parses:**
 ```json
 {
-  "artifact": "research",  // explicit
-  "section": "competitive-analysis"  // matched
+  "[field]": "[explicit value]",
+  "[field]": "[matched value]"
 }
 ```
 
@@ -323,138 +247,129 @@ How do users reference sections in chat?
 
 **Explicit syntax:**
 ```
-@concept#what-is-it update the definition
-/research competitive-analysis add Cursor pricing
+@[resource]#[target] [action]
+/[resource] [target] [action]
+#[target] [action in current context]
 ```
 
 **Format:**
-- `@artifact_slug#section_slug` - Full reference
-- `/artifact_slug section_slug` - Command format
-- `#section_slug` - Section in current artifact
+- `@[slug]#[slug]` - Full reference
+- `/[slug] [slug]` - Command format
+- `#[slug]` - Target in current context
 
 
 ### Ambiguity Resolution
 
-**Multiple artifacts have "Overview" section:**
+**Multiple matches:**
 ```
-User: "Update the overview"
-Agent: "I found 'Overview' in concept.md and research.md. Which would you like to update?"
-```
-
-**Section title partial match:**
-```
-User: "Update the problem section"
-Agent: "Did you mean 'Problem Being Solved' in concept.md?"
+User: "[ambiguous input]"
+Agent: "I found '[target]' in [location 1] and [location 2]. Which would you like to [action]?"
 ```
 
+**Partial match:**
+```
+User: "[partial input]"
+Agent: "Did you mean '[full match]' in [location]?"
+```
 
+---
 
 ## Context Refresh Strategy
 
-<!-- 
-When to reload context:
-- On artifact change
-- On stage transition
-- On agent request
--->
+<!-- When to reload context -->
 
 ### Auto-Refresh Triggers
 
 **Refresh full context when:**
-1. User switches artifacts
-2. User switches stages
-3. Agent completes update operation
-4. User explicitly asks for refresh
+1. [Trigger condition]
+2. [Trigger condition]
+3. [Trigger condition]
+4. [Trigger condition]
 
 
 ### Incremental Updates
 
 **Update only changed parts when:**
-1. Section done state changes
-2. New message added
-3. Progress counts update
+1. [Condition]
+2. [Condition]
+3. [Condition]
 
 
 ### Context Staleness Detection
 
 **Warn if:**
-- Context is > 5 minutes old during active session
-- Agent references outdated section count
+- Context is > [X] minutes old during active session
+- Agent references outdated [data]
 - User made changes not reflected in agent's view
 
-
+---
 
 ## Agent Prompt Templates
 
-<!-- 
-Standard prompts with context injection:
--->
+<!-- Standard prompts with context injection -->
 
 ### Basic Chat Prompt
 
 ```markdown
-You are an AI assistant helping with ACK (Agent Context Kit).
+You are an AI assistant helping with [Project Name].
 
 ## Current Context
-Project: {{project.name}}
-Stage: {{project.current_stage}}
-Artifact: {{currentArtifact.name}} ({{currentArtifact.sections_complete}}/{{currentArtifact.sections_total}} complete)
+[ContextKey]: {{context.field}}
+[ContextKey]: {{context.field}}
+[ContextKey]: {{context.field}} ({{context.subfield}}/{{context.subfield}} complete)
 
-## Available Sections
-{{#each currentArtifact.sections}}
-- [{{#if is_done}}✓{{else}} {{/if}}] {{title}} ({{slug}})
+## Available [Resources]
+{{#each context.resources}}
+- [{{#if condition}}✓{{else}} {{/if}}] {{field}} ({{field}})
 {{/each}}
 
 ## Instructions
-- Help the user work on their ACK artifacts
-- Reference sections using their titles
-- Suggest updates using structured operations
-- Ask for clarification if ambiguous
+- [Instruction 1]
+- [Instruction 2]
+- [Instruction 3]
+- [Instruction 4]
 
 ## User Message
 {{userMessage}}
 ```
 
 
-### Research Agent Prompt
+### [Specialized Agent] Prompt
 
 ```markdown
-You are a research agent for ACK projects.
+You are a [specialized] agent for [Project Name].
 
 ## Task
-Research: {{researchQuery}}
+[TaskType]: {{taskInput}}
 
 ## Context
-Current artifact: {{currentArtifact.name}}
-Target section: {{targetSection}}
+[ContextField]: {{context.field}}
+[ContextField]: {{context.field}}
 
 ## Instructions
-1. Search for relevant information
-2. Synthesize findings
-3. Format as markdown
-4. Suggest update to {{targetSection}}
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+4. [Step 4]
 
 ## Output Format
 {
-  "findings": "...",
-  "sources": [...],
-  "suggested_content": "...",
+  "[field]": "...",
+  "[field]": [...],
+  "[field]": "...",
   "operation": {
-    "operation": "update_section",
-    "artifact_slug": "{{currentArtifact.slug}}",
-    "section_slug": "{{targetSection}}",
-    "content": "..."
+    "operation": "[operation_type]",
+    "[field]": "{{context.field}}",
+    "[field]": "..."
   }
 }
 ```
 
-
+---
 
 ## Context Serialization
 
-<!-- 
-How to convert context to/from JSON:
--->
+<!-- How to convert context to/from JSON -->
 
 ### Serialization Format
 
@@ -462,14 +377,13 @@ How to convert context to/from JSON:
 ```typescript
 function serializeContext(context: AgentContext): string {
   return JSON.stringify({
-    project: {
-      name: context.project.name,
-      stage: context.project.current_stage,
-      // ... 
+    [field]: {
+      [subfield]: context.[field].[subfield],
+      // ...
     },
-    artifact: {
-      // Convert Tiptap JSON to Markdown
-      content: tiptapToMarkdown(context.currentArtifact.content),
+    [field]: {
+      // Convert [format] to [format]
+      [subfield]: convert(context.[field].[subfield]),
       // ...
     }
   }, null, 2);
@@ -480,66 +394,58 @@ function serializeContext(context: AgentContext): string {
 ```typescript
 function deserializeOperation(json: string): AgentOperation {
   const parsed = JSON.parse(json);
-  
+
   // Validate operation
   const validated = AgentOperationSchema.parse(parsed);
-  
+
   return validated;
 }
 ```
 
-
+---
 
 ## Error Handling
 
-<!-- 
-How to handle context errors:
--->
+<!-- How to handle context errors -->
 
 ### Common Errors
 
-**1. Section not found:**
+**1. [Resource] not found:**
 ```json
 {
-  "error": "SECTION_NOT_FOUND",
-  "message": "Section 'xyz' not found in artifact 'concept'",
+  "error": "[ERROR_CODE]",
+  "message": "[Resource] '[id]' not found in [location]",
   "suggestions": [
-    "what-is-it",
-    "problem-being-solved"
+    "[suggestion-1]",
+    "[suggestion-2]"
   ]
 }
 ```
 
-**2. Artifact finalized:**
+**2. [Resource] locked:**
 ```json
 {
-  "error": "ARTIFACT_FINALIZED",
-  "message": "Cannot modify finalized artifact 'concept'",
-  "action": "Ask user to un-finalize or create snapshot"
+  "error": "[ERROR_CODE]",
+  "message": "Cannot modify [locked resource]",
+  "action": "[Suggested action]"
 }
 ```
 
 **3. Context too large:**
 ```json
 {
-  "error": "CONTEXT_TOO_LARGE",
-  "message": "Artifact content exceeds token limit",
-  "action": "Summarizing content or requesting specific sections"
+  "error": "[ERROR_CODE]",
+  "message": "[Resource] content exceeds token limit",
+  "action": "[Suggested action]"
 }
 ```
-
-
 
 ---
 
 ## Implementation Checklist
 
-<!-- 
-What needs to be built:
--->
-
-- [ ] Context builder function (AgentContext assembly)
-- [ ] Tiptap → Markdown converter
+- [ ] Context builder function
+- [ ] [Format] converter
 - [ ] Operation parser (natural language → structured)
 - [ ] Operation validator
 - [ ] Operation executor
@@ -547,11 +453,11 @@ What needs to be built:
 - [ ] Prompt template system
 - [ ] Error handling for all operations
 
+---
 
 ## Open Questions
 
-- [ ] Should agents see chat history from other artifacts?
-- [ ] How to handle multi-artifact operations (e.g., "compare concept and research")?
-- [ ] What's the max context size before we need summarization?
-- [ ] Should we cache serialized context?
-- [ ]
+- [ ] [Context design question]
+- [ ] [Multi-resource operation handling]
+- [ ] [Context size limits]
+- [ ] [Caching strategy]

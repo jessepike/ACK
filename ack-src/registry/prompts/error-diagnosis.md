@@ -1,17 +1,18 @@
 ---
-doc_id: "prompt-004"
-slug: "error-diagnosis"
-title: "Error Diagnosis Prompt"
-type: "prompt"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
+type: prompt
+description: "Error Diagnosis Prompt"
+version: 0.1.0
+updated: 2026-01-01
+status: active
 depends_on: []
+doc_id: prompt-004
+slug: error-diagnosis
+title: "Error Diagnosis Prompt"
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-01
+owner: human
 ---
 
 # Error Diagnosis Prompt

@@ -1,17 +1,18 @@
 ---
-doc_id: "guide-002"
-slug: "hierarchy-tiers"
-title: "Agent Context Registry Hierarchy"
-type: "research_note"
-tier: "tier1"
-status: "active"
-authority: "binding"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-02"
-updated: "2026-01-02"
-owner: "human"
+type: research_note
+description: "Agent Context Registry Hierarchy"
+version: 0.1.0
+updated: 2026-01-02
+status: active
 depends_on: []
+doc_id: guide-002
+slug: hierarchy-tiers
+title: "Agent Context Registry Hierarchy"
+tier: tier1
+authority: binding
+review_status: draft
+created: 2026-01-02
+owner: human
 ---
 
 # Agent Context Registry Hierarchy

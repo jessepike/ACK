@@ -1,17 +1,18 @@
 ---
-doc_id: "prompt-001"
-slug: "commit-message"
-title: "Commit Message Prompt"
-type: "prompt"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
+type: prompt
+description: "Commit Message Prompt"
+version: 0.1.0
+updated: 2026-01-01
+status: active
 depends_on: []
+doc_id: prompt-001
+slug: commit-message
+title: "Commit Message Prompt"
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-01
+owner: human
 ---
 
 # Commit Message Prompt

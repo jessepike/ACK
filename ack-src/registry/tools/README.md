@@ -1,17 +1,18 @@
 ---
-doc_id: "doc-001"
-slug: "mcp-inventory"
-title: "MCP Servers Inventory"
-type: "artifact_registry"
-tier: "tier1"
-status: "active"
-authority: "binding"
-version: "0.2.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-02"
-owner: "human"
+type: artifact_registry
+description: "MCP Servers Inventory"
+version: 0.2.0
+updated: 2026-01-02
+status: active
 depends_on: []
+doc_id: doc-001
+slug: mcp-inventory
+title: "MCP Servers Inventory"
+tier: tier1
+authority: binding
+review_status: draft
+created: 2026-01-01
+owner: human
 ---
 
 # MCP Servers Inventory

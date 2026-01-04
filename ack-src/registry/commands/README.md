@@ -1,17 +1,18 @@
 ---
-doc_id: "doc-002"
-slug: "builtin-commands-reference"
-title: "Built-in vs Custom Commands Reference"
-type: "research_note"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-02"
-updated: "2026-01-02"
-owner: "human"
+type: research_note
+description: "Built-in vs Custom Commands Reference"
+version: 0.1.0
+updated: 2026-01-02
+status: active
 depends_on: []
+doc_id: doc-002
+slug: builtin-commands-reference
+title: "Built-in vs Custom Commands Reference"
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-02
+owner: human
 ---
 
 # Built-in vs Custom Commands Reference

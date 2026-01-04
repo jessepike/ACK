@@ -1,3 +1,10 @@
+---
+type: template
+description: "Cookiecutter: Solo Dev Repo Template"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # Cookiecutter: Solo Dev Repo Template
 
 # How to run the cookiecutter template

@@ -1,7 +1,9 @@
 ---
-name: nextjs
-description: Next.js 14+ App Router patterns and procedures
+type: skill
+description: "Next.js 14+ App Router patterns and procedures"
 version: 1.0.0
+updated: "2026-01-04T09:26:12"
+name: nextjs
 ---
 
 # Next.js Skill

@@ -1,3 +1,10 @@
+---
+type: guide
+description: AGS_VERSION.md
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # AGS_VERSION.md
 
 ags_version: "1.0.0"

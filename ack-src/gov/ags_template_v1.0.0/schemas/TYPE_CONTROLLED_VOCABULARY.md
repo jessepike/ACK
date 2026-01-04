@@ -1,17 +1,18 @@
 ---
-doc_id: "spec-003"
-slug: "artifact-type-vocabulary"
-title: "Controlled Vocabulary for Artifact Type"
-type: "schema"
-tier: "tier1"
-status: "active"
-authority: "binding"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
+type: schema
+description: "Controlled vocabulary for `type`"
+version: 0.1.0
+updated: 2026-01-01
+status: active
 depends_on: []
+doc_id: spec-003
+slug: artifact-type-vocabulary
+title: "Controlled Vocabulary for Artifact Type"
+tier: tier1
+authority: binding
+review_status: draft
+created: 2026-01-01
+owner: human
 ---
 
 # Controlled vocabulary for `type`

@@ -1,17 +1,18 @@
 ---
-doc_id: "gov-090"
-slug: "ci-example-github-actions"
+type: runbook
+description: "Ci Example Github Actions"
+version: 0.1.0
+updated: 2026-01-01
+status: draft
+depends_on: "["gov-001"]"
+doc_id: gov-090
+slug: ci-example-github-actions
 title: "CI Example: GitHub Actions"
-type: "runbook"
-tier: "tier2"
-authority: "guidance"
-status: "draft"
-version: "0.1.0"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
-review_status: "draft"
-depends_on: ["gov-001"]
+tier: tier2
+authority: guidance
+created: 2026-01-01
+owner: human
+review_status: draft
 ---
 
 ## GitHub Actions (example)

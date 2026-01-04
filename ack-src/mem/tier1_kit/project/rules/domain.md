@@ -1,12 +1,13 @@
 ---
-doc_id: "rule-project-003"
+type: rule_domain
+description: "Domain Rules"
+version: 0.1.0
+updated: 2026-01-02
+status: draft
+doc_id: rule-project-003
 title: "Domain Rules"
-type: "rule_domain"
-status: "draft"
-version: "0.1.0"
-owner: "human"
-created: "2026-01-02"
-updated: "2026-01-02"
+owner: human
+created: 2026-01-02
 ---
 
 # Domain Rules

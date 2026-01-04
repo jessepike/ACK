@@ -1,12 +1,13 @@
 ---
-doc_id: "review-mem-synthesis-001"
+type: research_note
+description: "Tier-1 Memory Kit Review Synthesis"
+version: 1.0.0
+updated: 2026-01-02
+status: active
+doc_id: review-mem-synthesis-001
 title: "Tier-1 Kit Review Synthesis"
-type: "research_note"
-status: "active"
-version: "1.0.0"
-owner: "human"
-created: "2026-01-02"
-updated: "2026-01-02"
+owner: human
+created: 2026-01-02
 ---
 
 # Tier-1 Memory Kit Review Synthesis

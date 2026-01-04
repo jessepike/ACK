@@ -1,3 +1,10 @@
+---
+type: guide
+description: "Tier-1 Memory Kit"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # Tier-1 Memory Kit
 
 Starter templates for Claude Code's native memory system (CLAUDE.md + rules/).

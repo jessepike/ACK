@@ -1,17 +1,18 @@
 ---
+type: runbook
+description: "Naming Conventions"
+version: 1.0.0
+updated: 2026-01-01
+status: active
+depends_on: []
 doc_id: gov-040
 slug: naming-conventions
-title: Naming Conventions
-type: runbook
+title: "Naming Conventions"
 tier: tier1
-status: active
 authority: binding
-version: 1.0.0
 review_status: accepted
-created: '2026-01-01'
-updated: '2026-01-01'
+created: 2026-01-01
 owner: human
-depends_on: []
 ---
 ---
 

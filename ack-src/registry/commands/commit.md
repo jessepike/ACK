@@ -1,21 +1,19 @@
 ---
-doc_id: "cmd-004"
-slug: "commit"
+type: command
+description: "Commit Command"
+version: 0.1.0
+updated: 2026-01-01
+status: review
+depends_on: "["prompt-001"]"
+doc_id: cmd-004
+slug: commit
 title: "Commit Command"
-type: "command"
-tier: "tier2"
-status: "review"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
-depends_on: ["prompt-001"]
-triggers:
-  - /commit
-  - write commit message
-  - generate commit
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-01
+owner: human
+triggers: 
 notes: "May overlap with Claude Code built-in. Pending review."
 ---
 

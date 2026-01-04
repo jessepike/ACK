@@ -1,12 +1,13 @@
 ---
-doc_id: "rule-project-002"
+type: rule_stack
+description: "Stack Rules"
+version: 0.1.0
+updated: 2026-01-02
+status: draft
+doc_id: rule-project-002
 title: "Stack Rules"
-type: "rule_stack"
-status: "draft"
-version: "0.1.0"
-owner: "human"
-created: "2026-01-02"
-updated: "2026-01-02"
+owner: human
+created: 2026-01-02
 ---
 
 # Stack Rules

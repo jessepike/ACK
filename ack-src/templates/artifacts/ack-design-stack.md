@@ -1,107 +1,92 @@
-# Technology Stack: ACK
-
 ---
-status: "Draft"
-created: 2025-01-01
-author: "jess@pike"
-stage: "design"
+type: artifact
+stage: design
+artifact: stack
+description: "Technology choices, framework decisions, and infrastructure"
+version: 1.0.0
+updated: "2026-01-04T09:26:12"
+status: draft
+---
+
+# [Project Name] - Technology Stack
+
+## Overview
+
+<!-- Summary of technology choices -->
+
+[Brief description of the overall technology approach and key decisions]
+
 ---
 
 ## Frontend Framework
 
-<!-- 
-Primary frontend technology choice:
-- What framework/library?
-- Why this choice over alternatives?
-- Version/variant specifics
-- Key benefits for this project
--->
+<!-- Primary frontend technology choice -->
 
-**Choice:** 
-
+**Choice:** [Framework/Library]
 
 **Alternatives considered:**
+
 | Option | Pros | Cons | Decision |
 |--------|------|------|----------|
-|        |      |      |          |
-|        |      |      |          |
-
+| [Option 1] | [Pro] | [Con] | [Chosen/Rejected] |
+| [Option 2] | [Pro] | [Con] | [Chosen/Rejected] |
+| [Option 3] | [Pro] | [Con] | [Chosen/Rejected] |
 
 **Why this choice:**
-- 
-- 
-- 
-
+- [Reason 1]
+- [Reason 2]
+- [Reason 3]
 
 **Version & Configuration:**
-- Version:
-- Routing:
-- State management:
-- Build tool:
+- Version: [X.Y.Z]
+- Routing: [Approach]
+- State management: [Library/approach]
+- Build tool: [Tool]
 
-
+---
 
 ## Editor/Rich Text
 
-<!-- 
-How will users edit markdown/structured content?
-- Editor library choice
-- Why this over alternatives?
-- What features does it enable?
-- Integration complexity
--->
+<!-- Content editing approach -->
 
-**Choice:**
-
+**Choice:** [Editor library]
 
 **Alternatives considered:**
+
 | Option | Pros | Cons | Decision |
 |--------|------|------|----------|
-| Tiptap |      |      |          |
-| ProseMirror |  |    |          |
-| Lexical |    |      |          |
-| Slate   |    |      |          |
-
+| [Option 1] | | | |
+| [Option 2] | | | |
+| [Option 3] | | | |
+| [Option 4] | | | |
 
 **Why this choice:**
-- 
-- 
-- 
-
+- [Reason 1]
+- [Reason 2]
+- [Reason 3]
 
 **Key features enabled:**
-- [ ] Markdown support
-- [ ] Custom nodes (sections)
-- [ ] Collaboration ready
-- [ ] Extensions system
-- [ ] 
+- [ ] [Feature 1]
+- [ ] [Feature 2]
+- [ ] [Feature 3]
+- [ ] [Feature 4]
 
+**Integration notes:** [Notes on integration complexity]
 
-**Integration notes:**
-
-
-
+---
 
 ## Database & Backend
 
-<!-- 
-Data persistence and backend services:
-- Database choice
-- Backend framework (if separate)
-- Auth solution
-- File storage
--->
+<!-- Data persistence and backend services -->
 
 ### Database
 
-**Choice:**
-
+**Choice:** [Database]
 
 **Why this choice:**
-- 
-- 
-- 
-
+- [Reason 1]
+- [Reason 2]
+- [Reason 3]
 
 **Schema approach:**
 - [ ] SQL (relational)
@@ -109,238 +94,188 @@ Data persistence and backend services:
 - [ ] Hybrid (JSONB)
 - [ ] Graph
 
-
 **Key features:**
-- Vector search:
-- Real-time:
-- Auth:
-- Storage:
+- Vector search: [Yes/No/N/A]
+- Real-time: [Yes/No/N/A]
+- Auth: [Yes/No/N/A]
+- Storage: [Yes/No/N/A]
 
 
 ### Backend Services
 
-**Choice:**
-
+**Choice:** [Backend framework/service]
 
 **API approach:**
 - [ ] REST
-- [ ] GraphQL  
+- [ ] GraphQL
 - [ ] tRPC
 - [ ] Server Actions
 
+**Hosting:** [Hosting platform]
 
-**Hosting:**
-
-
-
+---
 
 ## AI/Agent Integration
 
-<!-- 
-How will agents/AI work?
-- Which AI providers?
-- How to orchestrate multiple agents?
-- Context management
-- Cost considerations
--->
+<!-- AI provider and agent architecture -->
 
 ### AI Providers
 
-**Primary:**
-
+**Primary:** [Provider]
 
 **Alternatives/Fallbacks:**
+
 | Provider | Models | Use Case | Cost |
 |----------|--------|----------|------|
-| Anthropic | Claude | | |
-| OpenAI | GPT-4 | | |
-| | | | |
+| [Provider 1] | [Models] | [Use case] | [Cost] |
+| [Provider 2] | [Models] | [Use case] | [Cost] |
+| [Provider 3] | [Models] | [Use case] | [Cost] |
 
 
 ### Agent Architecture
 
-**Orchestration approach:**
-
+**Orchestration approach:** [How agents are coordinated]
 
 **Context injection:**
-- How does agent see artifact content?
-- How does agent target specific sections?
-- How does agent read project state?
-
+- How does agent see [content]? [Approach]
+- How does agent target specific [resources]? [Approach]
+- How does agent read [state]? [Approach]
 
 **Agent types:**
-1. **Claude (general assistant):**
-   - Capabilities:
-   - Context limits:
-   
-2. **Research Agent:**
-   - Capabilities:
-   - Tools:
-   
-3. **[Other agent]:**
-   - Capabilities:
 
+1. **[Agent 1] ([purpose]):**
+   - Capabilities: [What it can do]
+   - Context limits: [Token/size limits]
 
+2. **[Agent 2]:**
+   - Capabilities: [What it can do]
+   - Tools: [Available tools]
+
+3. **[Agent 3]:**
+   - Capabilities: [What it can do]
+
+---
 
 ## Styling & UI
 
-<!-- 
-CSS/styling approach:
-- CSS framework
-- Component library
-- Design system
-- Theming
--->
+<!-- CSS/styling approach -->
 
-**Choice:**
-
+**Choice:** [CSS framework/approach]
 
 **Alternatives considered:**
-- Tailwind CSS
-- Styled Components
-- CSS Modules
-- vanilla CSS
+- [Alternative 1]
+- [Alternative 2]
+- [Alternative 3]
+- [Alternative 4]
 
+**Component library:** [Library or "Custom"]
 
-**Component library:**
+**Design tokens:** [How design tokens are managed]
 
-
-**Design tokens:**
-
-
-
+---
 
 ## Development Tools
 
-<!-- 
-Developer experience tools:
-- Linting
-- Formatting
-- Testing
-- Type checking
--->
+<!-- Developer experience tools -->
 
 ### Code Quality
 
-**Linting:**
-- 
+**Linting:** [Tool and config]
 
-**Formatting:**
-- 
+**Formatting:** [Tool and config]
 
-**Type Checking:**
-- 
+**Type Checking:** [Tool and config]
 
 
 ### Testing Strategy
 
 **Unit tests:**
-- Framework:
-- Coverage target:
+- Framework: [Framework]
+- Coverage target: [X]%
 
 **Integration tests:**
-- Framework:
+- Framework: [Framework]
 
 **E2E tests:**
-- Framework:
+- Framework: [Framework]
 
-
+---
 
 ## Deployment & Infrastructure
 
-<!-- 
-Where and how will this run?
-- Hosting platform
-- CI/CD
-- Monitoring
-- Costs
--->
+<!-- Where and how this runs -->
 
-**Hosting:**
-
+**Hosting:** [Platform]
 
 **CI/CD:**
-- Platform:
-- Pipeline:
-- Deployment triggers:
-
+- Platform: [Platform]
+- Pipeline: [Description]
+- Deployment triggers: [Triggers]
 
 **Monitoring:**
-- Error tracking:
-- Analytics:
-- Performance:
-
+- Error tracking: [Service]
+- Analytics: [Service]
+- Performance: [Service]
 
 **Estimated costs (monthly):**
-- Hosting: $
-- Database: $
-- AI API: $
-- Other: $
-- **Total:** $
 
+| Service | Cost |
+|---------|------|
+| Hosting | $[X] |
+| Database | $[X] |
+| AI API | $[X] |
+| Other | $[X] |
+| **Total** | **$[X]** |
 
+---
 
 ## Third-Party Services
 
-<!-- 
-External dependencies:
-- Payment processing
-- Email
-- Analytics
-- etc.
--->
+<!-- External dependencies -->
 
 | Service | Purpose | Cost | Required for MVP? |
 |---------|---------|------|-------------------|
-|         |         |      | Yes/No            |
-|         |         |      |                   |
-|         |         |      |                   |
+| [Service 1] | [Purpose] | $[X]/mo | Yes/No |
+| [Service 2] | [Purpose] | $[X]/mo | Yes/No |
+| [Service 3] | [Purpose] | $[X]/mo | Yes/No |
 
-
+---
 
 ## Tech Debt & Tradeoffs
 
-<!-- 
-Known limitations of these choices:
-- What are we punting?
-- What will bite us later?
-- Migration paths if needed
--->
+<!-- Known limitations -->
 
 **Accepted tech debt:**
-1. 
-2. 
-3. 
-
+1. [Debt item and why acceptable]
+2. [Debt item and why acceptable]
+3. [Debt item and why acceptable]
 
 **Future migrations we might need:**
-- 
-- 
-
+- [Potential migration]
+- [Potential migration]
 
 **Scalability concerns:**
-- 
-- 
+- [Concern and mitigation plan]
+- [Concern and mitigation plan]
 
-
+---
 
 ## Dependencies Summary
 
-<!-- 
-Key package.json / requirements.txt entries
--->
+<!-- Key package dependencies -->
 
 ### Core Dependencies
 
 ```json
 {
   "dependencies": {
-    "next": "14.x",
-    "react": "18.x",
-    // ... list key deps
+    "[package]": "[version]",
+    "[package]": "[version]",
+    "[package]": "[version]"
   },
   "devDependencies": {
-    // ...
+    "[package]": "[version]",
+    "[package]": "[version]"
   }
 }
 ```
@@ -349,18 +284,24 @@ Key package.json / requirements.txt entries
 
 | Package | Version | Purpose | Bundle Size | License |
 |---------|---------|---------|-------------|---------|
-|         |         |         |             |         |
-|         |         |         |             |         |
-
+| [Package 1] | [X.Y.Z] | [Purpose] | ~[X]kb | [License] |
+| [Package 2] | [X.Y.Z] | [Purpose] | ~[X]kb | [License] |
+| [Package 3] | [X.Y.Z] | [Purpose] | ~[X]kb | [License] |
 
 ---
 
-**Decision log:**
-- [Date]: Chose Next.js over X because Y
-- [Date]: Selected Tiptap for editor due to Z
-- 
+## Decision Log
 
-**Questions to resolve:**
-- [ ] 
-- [ ] 
-- [ ]
+<!-- Track major decisions -->
+
+- **[Date]:** Chose [Technology] over [Alternative] because [Reason]
+- **[Date]:** Selected [Technology] for [purpose] due to [Reason]
+- **[Date]:** [Decision and rationale]
+
+---
+
+## Open Questions
+
+- [ ] [Technology decision to make]
+- [ ] [Integration question]
+- [ ] [Cost/scaling concern]

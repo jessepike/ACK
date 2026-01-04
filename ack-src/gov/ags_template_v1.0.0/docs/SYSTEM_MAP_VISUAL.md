@@ -1,21 +1,18 @@
 ---
+type: prompt
+description: "System Map Visual"
+version: 0.2.0
+updated: 2026-01-01
+status: active
+depends_on: 
 doc_id: gov-031
 slug: system-map-visual
-title: System Map Visual
-type: "prompt"
+title: "System Map Visual"
 tier: tier1
-status: active
 authority: binding
-version: 0.2.0
 review_status: draft
-created: '2026-01-01'
-updated: '2026-01-01'
+created: 2026-01-01
 owner: human
-depends_on:
-- gov-030
-- gov-020
-- art-001
-- gov-011
 ---
 ---
 

@@ -1,3 +1,10 @@
+---
+type: domain
+description: "Next.js Domain Package"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # Next.js Domain Package
 
 **Purpose:** App Router development, data fetching, server/client components, deployment

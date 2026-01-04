@@ -1,21 +1,19 @@
 ---
-doc_id: "cmd-005"
-slug: "pr"
+type: command
+description: "PR Command"
+version: 0.1.0
+updated: 2026-01-01
+status: active
+depends_on: "["prompt-002"]"
+doc_id: cmd-005
+slug: pr
 title: "PR Command"
-type: "command"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
-depends_on: ["prompt-002"]
-triggers:
-  - /pr
-  - write pr description
-  - generate pull request
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-01
+owner: human
+triggers: 
 ---
 
 # PR Command

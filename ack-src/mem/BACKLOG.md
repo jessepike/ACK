@@ -1,12 +1,13 @@
 ---
-doc_id: "mem-backlog-001"
+type: backlog
+description: "Memory System Backlog"
+version: 0.1.0
+updated: 2026-01-02
+status: active
+doc_id: mem-backlog-001
 title: "Memory System Backlog"
-type: "backlog"
-status: "active"
-version: "0.1.0"
-owner: "human"
-created: "2026-01-02"
-updated: "2026-01-02"
+owner: human
+created: 2026-01-02
 ---
 
 # Memory System Backlog

@@ -1,23 +1,19 @@
 ---
-doc_id: "cmd-008"
-slug: "github-debug"
+type: command
+description: "GitHub Debug Command"
+version: 0.1.0
+updated: 2026-01-02
+status: active
+depends_on: "["agent-004", "skill-004", "tool-004"]"
+doc_id: cmd-008
+slug: github-debug
 title: "GitHub Debug Command"
-type: "command"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-02"
-updated: "2026-01-02"
-owner: "human"
-depends_on: ["agent-004", "skill-004", "tool-004"]
-triggers:
-  - /github-debug
-  - github not working
-  - PR failing
-  - actions failing
-  - workflow error
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-02
+owner: human
+triggers: 
 ---
 
 # GitHub Debug Command

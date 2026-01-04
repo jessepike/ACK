@@ -1,23 +1,19 @@
 ---
-doc_id: "cmd-002"
-slug: "supabase-debug"
+type: command
+description: "Supabase Debug Command"
+version: 0.1.0
+updated: 2026-01-01
+status: active
+depends_on: "["agent-002", "skill-002", "tool-002"]"
+doc_id: cmd-002
+slug: supabase-debug
 title: "Supabase Debug Command"
-type: "command"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
-depends_on: ["agent-002", "skill-002", "tool-002"]
-triggers:
-  - /supabase-debug
-  - supabase query failing
-  - supabase auth not working
-  - RLS blocking
-  - permission denied supabase
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-01
+owner: human
+triggers: 
 ---
 
 # Supabase Debug Command

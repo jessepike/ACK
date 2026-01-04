@@ -1,12 +1,13 @@
 ---
-doc_id: "rule-global-003"
-title: "Workflows"
-type: "rule_workflow"
-status: "active"
-version: "1.0.0"
-owner: "human"
-created: "2026-01-02"
-updated: "2026-01-02"
+type: rule_workflow
+description: "Workflow Patterns"
+version: 1.0.0
+updated: 2026-01-02
+status: active
+doc_id: rule-global-003
+title: Workflows
+owner: human
+created: 2026-01-02
 ---
 
 # Workflow Patterns

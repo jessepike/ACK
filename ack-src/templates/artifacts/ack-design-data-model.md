@@ -1,430 +1,388 @@
-# Data Model: ACK
+---
+type: artifact
+stage: design
+artifact: data-model
+description: "Database schema, entity relationships, and data access patterns"
+version: 1.0.0
+updated: "2026-01-04T09:26:12"
+status: draft
+---
 
----
-status: "Draft"
-created: 2025-01-01
-author: "jess@pike"
-stage: "design"
----
+# [Project Name] - Data Model
 
 ## Overview
 
-<!-- 
-High-level data model summary:
-- Core entities
-- Relationships
-- Storage strategy
--->
+<!-- High-level data model summary -->
 
 ### Core Entities
 
 **Primary entities:**
-1. Projects
-2. Artifacts
-3. Sections (embedded in Artifacts)
-4. Messages
-5. Snapshots
+1. [Entity 1]
+2. [Entity 2]
+3. [Entity 3]
+4. [Entity 4]
+5. [Entity 5]
 
 
 ### Entity Relationship Diagram
 
 ```
 ┌─────────────┐
-│  Projects   │
+│  [Entity1]  │
 │  - id       │
-│  - name     │
-│  - stage    │
+│  - [field]  │
+│  - [field]  │
 └──────┬──────┘
        │ 1
        │
        │ *
 ┌──────┴──────┐         ┌─────────────┐
-│  Artifacts  │────────→│  Snapshots  │
+│  [Entity2]  │────────→│  [Entity3]  │
 │  - id       │  1   *  │  - id       │
-│  - content  │         │  - content  │
-│  - metadata │         │  - type     │
+│  - [field]  │         │  - [field]  │
+│  - [field]  │         │  - [field]  │
 └──────┬──────┘         └─────────────┘
        │ 1
        │
        │ *
 ┌──────┴──────┐
-│  Messages   │
+│  [Entity4]  │
 │  - id       │
-│  - role     │
-│  - content  │
+│  - [field]  │
+│  - [field]  │
 └─────────────┘
 ```
 
-
+---
 
 ## Entity Schemas
 
-<!-- 
-Detailed schema for each entity:
-- Fields
-- Types
-- Constraints
-- Indexes
--->
+<!-- Detailed schema for each entity -->
 
-### Projects
+### [Entity 1]
 
-**Purpose:** Top-level container for ACK workflow
+**Purpose:** [What this entity represents]
 
 **Schema:**
 ```typescript
-interface Project {
+interface [Entity1] {
   id: string;                    // UUID
-  name: string;                  // "ack-demo"
-  description?: string;
-  current_stage: StageType;      // 'discovery' | 'design' | ...
-  created_by?: string;           // User ID (future)
+  [field]: string;               // [Description]
+  [field]?: string;              // [Description]
+  [field]: [EnumType];           // [Description]
   created_at: Date;
   updated_at: Date;
 }
 
-type StageType = 
-  | 'discovery' 
-  | 'design' 
-  | 'environment' 
-  | 'workflow' 
-  | 'implementation';
+type [EnumType] =
+  | '[value1]'
+  | '[value2]'
+  | '[value3]';
 ```
 
 **Constraints:**
-- `name` required, max 100 chars
-- `current_stage` must be valid enum
-- 
+- `[field]` required, max [X] chars
+- `[field]` must be valid enum
+- [Additional constraint]
 
 **Indexes:**
 - Primary: `id`
-- 
+- [Additional index]
 
 
-### Artifacts
+### [Entity 2]
 
-**Purpose:** Individual documents (concept.md, research.md, etc.)
+**Purpose:** [What this entity represents]
 
 **Schema:**
 ```typescript
-interface Artifact {
+interface [Entity2] {
   id: string;                    // UUID
-  project_id: string;            // Foreign key → Projects
-  
-  name: string;                  // "concept.md"
-  slug: string;                  // "concept"
-  stage: StageType;              // "discovery"
-  status: ArtifactStatus;        // "draft" | "finalized"
-  
-  // HYBRID STORAGE APPROACH
-  content: TiptapJSON;           // Full Tiptap document
-  section_metadata: SectionMetadata[];
-  
+  [entity1]_id: string;          // Foreign key → [Entity1]
+
+  [field]: string;               // [Description]
+  [field]: string;               // [Description]
+  [field]: [StatusType];         // [Description]
+
+  // [Storage approach description]
+  [field]: [JSONType];           // [Description]
+  [field]: [MetadataType][];     // [Description]
+
   // Denormalized counts
-  sections_total: number;
-  sections_complete: number;
-  
+  [count_field]: number;
+  [count_field]: number;
+
   created_at: Date;
   updated_at: Date;
 }
 
-type ArtifactStatus = 'draft' | 'finalized';
+type [StatusType] = '[status1]' | '[status2]';
 
-interface SectionMetadata {
-  slug: string;                  // "what-is-it"
-  title: string;                 // "What Is It?"
-  is_done: boolean;
-  is_collapsed: boolean;
-  order: number;
+interface [MetadataType] {
+  [field]: string;               // [Description]
+  [field]: string;               // [Description]
+  [field]: boolean;
+  [field]: number;
 }
 ```
 
 **Constraints:**
-- `project_id` must exist in Projects
-- `(project_id, stage, slug)` unique
-- `sections_complete <= sections_total`
-- 
+- `[entity1]_id` must exist in [Entity1]
+- `([entity1]_id, [field], [field])` unique
+- `[count_field] <= [count_field]`
 
 **Indexes:**
 - Primary: `id`
-- Composite: `(project_id, stage)`
-- 
+- Composite: `([entity1]_id, [field])`
 
 
-### Artifact Snapshots
+### [Entity 3]
 
-**Purpose:** Versioning for key moments (stage transitions, agent changes)
+**Purpose:** [What this entity represents]
 
 **Schema:**
 ```typescript
-interface ArtifactSnapshot {
+interface [Entity3] {
   id: string;
-  artifact_id: string;           // Foreign key → Artifacts
-  
-  snapshot_type: SnapshotType;
-  content: TiptapJSON;           // Full content at snapshot time
-  section_metadata: SectionMetadata[];
-  
-  created_by: string;            // 'user' | 'claude' | agent name
+  [entity2]_id: string;          // Foreign key → [Entity2]
+
+  [field]: [SnapshotType];
+  [field]: [JSONType];           // [Description]
+  [field]: [MetadataType][];
+
+  created_by: string;            // '[source1]' | '[source2]' | [agent name]
   created_at: Date;
-  change_description?: string;
+  [field]?: string;
 }
 
-type SnapshotType = 
-  | 'stage_transition'
-  | 'agent_change'
-  | 'finalization'
-  | 'manual';
+type [SnapshotType] =
+  | '[type1]'
+  | '[type2]'
+  | '[type3]'
+  | '[type4]';
 ```
 
 **Constraints:**
-- `artifact_id` must exist
-- `snapshot_type` must be valid enum
+- `[entity2]_id` must exist
+- `[field]` must be valid enum
 - Immutable (no UPDATEs)
 
 **Indexes:**
 - Primary: `id`
-- Composite: `(artifact_id, created_at DESC)`
+- Composite: `([entity2]_id, created_at DESC)`
 
 
-### Messages
+### [Entity 4]
 
-**Purpose:** Chat history between user and agents
+**Purpose:** [What this entity represents]
 
 **Schema:**
 ```typescript
-interface Message {
+interface [Entity4] {
   id: string;
-  project_id: string;            // Foreign key → Projects
-  artifact_id?: string;          // Optional context
-  
-  role: MessageRole;             // 'user' | 'assistant'
-  agent_type?: string;           // 'claude' | 'research_agent'
-  content: string;               // Message text
-  
-  metadata?: MessageMetadata;    // Structured data
+  [entity1]_id: string;          // Foreign key → [Entity1]
+  [entity2]_id?: string;         // Optional context
+
+  [field]: [RoleType];           // [Description]
+  [field]?: string;              // [Description]
+  [field]: string;               // [Description]
+
+  [field]?: [MetadataType];      // Structured data
   created_at: Date;
 }
 
-type MessageRole = 'user' | 'assistant';
+type [RoleType] = '[role1]' | '[role2]';
 
-interface MessageMetadata {
-  command?: string;              // "/research", "/validate"
-  section_target?: string;       // Section slug if targeting
-  tool_calls?: ToolCall[];       // Agent tool usage
+interface [MetadataType] {
+  [field]?: string;              // [Description]
+  [field]?: string;              // [Description]
+  [field]?: [ToolCall][];        // [Description]
   [key: string]: any;
 }
 ```
 
 **Constraints:**
-- `project_id` required
-- `role` must be 'user' or 'assistant'
-- If `role === 'assistant'`, `agent_type` recommended
+- `[entity1]_id` required
+- `[field]` must be valid enum
 
 **Indexes:**
 - Primary: `id`
-- Composite: `(project_id, created_at DESC)`
-- Optional: `(artifact_id, created_at DESC)`
+- Composite: `([entity1]_id, created_at DESC)`
+- Optional: `([entity2]_id, created_at DESC)`
 
-
+---
 
 ## Data Relationships
 
-<!-- 
-How entities relate:
-- Foreign keys
-- Cascade rules
-- Referential integrity
--->
+<!-- How entities relate -->
 
 ### Relationships Summary
 
 ```
-Projects (1) ──→ (*) Artifacts
-Artifacts (1) ──→ (*) Snapshots
-Projects (1) ──→ (*) Messages
-Artifacts (1) ──→ (*) Messages (optional)
+[Entity1] (1) ──→ (*) [Entity2]
+[Entity2] (1) ──→ (*) [Entity3]
+[Entity1] (1) ──→ (*) [Entity4]
+[Entity2] (1) ──→ (*) [Entity4] (optional)
 ```
 
 ### Cascade Rules
 
-**When Project is deleted:**
-- Artifacts: CASCADE DELETE
-- Messages: CASCADE DELETE
-- Snapshots: CASCADE DELETE (via Artifacts)
+**When [Entity1] is deleted:**
+- [Entity2]: CASCADE DELETE
+- [Entity4]: CASCADE DELETE
+- [Entity3]: CASCADE DELETE (via [Entity2])
 
-**When Artifact is deleted:**
-- Snapshots: CASCADE DELETE
-- Messages: SET NULL (artifact_id)
+**When [Entity2] is deleted:**
+- [Entity3]: CASCADE DELETE
+- [Entity4]: SET NULL ([entity2]_id)
 
-
+---
 
 ## Content Storage Strategy
 
-<!-- 
-How is Tiptap content stored?
-- JSON structure
-- Section extraction
-- Performance considerations
--->
+<!-- How is complex content stored? -->
 
-### Tiptap JSON Format
+### [Format] JSON Format
 
-**Example artifact content:**
+**Example content:**
 ```json
 {
-  "type": "doc",
+  "type": "[root_type]",
   "content": [
     {
-      "type": "heading",
-      "attrs": { "level": 2 },
-      "content": [{ "type": "text", "text": "What Is It?" }]
+      "type": "[node_type]",
+      "attrs": { "[attr]": [value] },
+      "content": [{ "type": "[leaf_type]", "[field]": "[value]" }]
     },
     {
-      "type": "paragraph",
-      "content": [{ "type": "text", "text": "ACK is..." }]
-    },
-    {
-      "type": "heading",
-      "attrs": { "level": 2 },
-      "content": [{ "type": "text", "text": "Problem Being Solved" }]
+      "type": "[node_type]",
+      "content": [{ "type": "[leaf_type]", "[field]": "[value]" }]
     }
   ]
 }
 ```
 
-### Section Extraction Logic
+### [Metadata] Extraction Logic
 
-**How to parse sections from content:**
+**How to parse [metadata] from content:**
 ```typescript
-function extractSections(content: TiptapJSON): SectionMetadata[] {
-  const sections: SectionMetadata[] = [];
+function extract[Metadata](content: [JSONType]): [MetadataType][] {
+  const items: [MetadataType][] = [];
   let currentOrder = 1;
-  
+
   content.content.forEach(node => {
-    if (node.type === 'heading' && node.attrs.level === 2) {
-      const title = extractText(node);
-      const slug = slugify(title);
-      
-      sections.push({
+    if (node.type === '[target_type]' && node.attrs.[attr] === [value]) {
+      const [field] = extractText(node);
+      const slug = slugify([field]);
+
+      items.push({
         slug,
-        title,
-        is_done: false,
-        is_collapsed: false,
+        [field],
+        [field]: false,
+        [field]: false,
         order: currentOrder++
       });
     }
   });
-  
-  return sections;
+
+  return items;
 }
 ```
 
 ### Metadata Sync Strategy
 
-**When to update section_metadata:**
-1. User adds new H2 heading → Add to metadata
-2. User deletes H2 heading → Remove from metadata
-3. User reorders sections → Update order field
-4. User checks "Done" → Update is_done field
-
+**When to update [metadata]:**
+1. User adds new [element] → Add to metadata
+2. User deletes [element] → Remove from metadata
+3. User reorders [elements] → Update order field
+4. User [action] → Update [field]
 
 **Sync points:**
-- After every Tiptap content change (debounced)
+- After every content change (debounced)
 - Before saving to database
-- On artifact load (validate sync)
+- On load (validate sync)
 
-
+---
 
 ## Query Patterns
 
-<!-- 
-Common queries and optimizations:
-- Frequent queries
-- Performance notes
-- Index usage
--->
+<!-- Common queries and optimizations -->
 
 ### Frequent Queries
 
-**1. Load project with all Discovery artifacts:**
+**1. Load [entity] with related [entities]:**
 ```sql
-SELECT 
-  p.*,
-  jsonb_agg(a.*) as artifacts
-FROM projects p
-LEFT JOIN artifacts a ON p.id = a.project_id
-WHERE p.id = $1
-  AND a.stage = 'discovery'
-GROUP BY p.id;
+SELECT
+  e1.*,
+  jsonb_agg(e2.*) as [entities]
+FROM [entity1] e1
+LEFT JOIN [entity2] e2 ON e1.id = e2.[entity1]_id
+WHERE e1.id = $1
+  AND e2.[field] = '[value]'
+GROUP BY e1.id;
 ```
 
-**Performance:** Use index on `(project_id, stage)`
+**Performance:** Use index on `([entity1]_id, [field])`
 
 
-**2. Get artifact with section progress:**
+**2. Get [entity] with calculated fields:**
 ```sql
-SELECT 
+SELECT
   id,
-  name,
-  sections_complete,
-  sections_total,
-  ROUND((sections_complete::numeric / sections_total::numeric) * 100) as progress_pct
-FROM artifacts
+  [field],
+  [count_field],
+  [count_field],
+  ROUND(([count_field]::numeric / [count_field]::numeric) * 100) as [calculated]
+FROM [entity2]
 WHERE id = $1;
 ```
 
 **Performance:** Uses denormalized counts (fast)
 
 
-**3. Stage progress aggregation:**
+**3. [Aggregation] query:**
 ```sql
-SELECT 
-  stage,
-  SUM(sections_complete) as complete,
-  SUM(sections_total) as total
-FROM artifacts
-WHERE project_id = $1
-GROUP BY stage;
+SELECT
+  [field],
+  SUM([count_field]) as [total1],
+  SUM([count_field]) as [total2]
+FROM [entity2]
+WHERE [entity1]_id = $1
+GROUP BY [field];
 ```
 
-**Performance:** Index on `project_id`
+**Performance:** Index on `[entity1]_id`
 
 
-**4. Recent chat history:**
+**4. Recent [items]:**
 ```sql
 SELECT *
-FROM messages
-WHERE project_id = $1
+FROM [entity4]
+WHERE [entity1]_id = $1
 ORDER BY created_at DESC
 LIMIT 50;
 ```
 
-**Performance:** Index on `(project_id, created_at DESC)`
+**Performance:** Index on `([entity1]_id, created_at DESC)`
 
-
+---
 
 ## Data Validation
 
-<!-- 
-How is data validated?
-- Database constraints
-- Application-level validation
-- Type safety
--->
+<!-- How is data validated? -->
 
 ### Database Constraints
 
-**Projects:**
+**[Entity1]:**
 ```sql
-CHECK (current_stage IN ('discovery', 'design', 'environment', 'workflow', 'implementation'))
+CHECK ([field] IN ('[value1]', '[value2]', '[value3]'))
 ```
 
-**Artifacts:**
+**[Entity2]:**
 ```sql
-CHECK (status IN ('draft', 'finalized'))
-CHECK (sections_complete <= sections_total)
-UNIQUE (project_id, stage, slug)
+CHECK ([field] IN ('[value1]', '[value2]'))
+CHECK ([count_field] <= [count_field])
+UNIQUE ([entity1]_id, [field], [field])
 ```
 
 
@@ -433,60 +391,52 @@ UNIQUE (project_id, stage, slug)
 **TypeScript types:**
 ```typescript
 // Compile-time safety
-type StageType = 'discovery' | 'design' | 'environment' | 'workflow' | 'implementation';
+type [EnumType] = '[value1]' | '[value2]' | '[value3]';
 
 // Runtime validation with Zod
-const ArtifactSchema = z.object({
-  name: z.string().min(1).max(100),
-  slug: z.string().regex(/^[a-z0-9-]+$/),
-  sections_total: z.number().int().min(0),
-  sections_complete: z.number().int().min(0),
+const [Entity]Schema = z.object({
+  [field]: z.string().min(1).max(100),
+  [field]: z.string().regex(/^[a-z0-9-]+$/),
+  [count_field]: z.number().int().min(0),
+  [count_field]: z.number().int().min(0),
   // ...
 }).refine(
-  data => data.sections_complete <= data.sections_total,
-  "sections_complete cannot exceed sections_total"
+  data => data.[count_field] <= data.[count_field],
+  "[count_field] cannot exceed [count_field]"
 );
 ```
 
-
+---
 
 ## Migration Strategy
 
-<!-- 
-How to handle schema changes:
-- Versioning
-- Backwards compatibility
-- Data migrations
--->
+<!-- How to handle schema changes -->
 
 ### Schema Versioning
 
-**Approach:**
-
+**Approach:** [Migration tool/approach]
 
 **Migration naming:**
 - `0001_initial_schema.sql`
-- `0002_add_artifact_status.sql`
-- `0003_add_snapshot_metadata.sql`
+- `0002_add_[feature].sql`
+- `0003_add_[feature].sql`
 
 
 ### Breaking Changes
 
-**If we need to change content structure:**
-
-Example: Adding tags to artifacts
+**Example: Adding [field] to [entity]**
 
 ```sql
--- Migration: 0005_add_tags.sql
+-- Migration: 000X_add_[field].sql
 
 -- 1. Add new column (nullable initially)
-ALTER TABLE artifacts ADD COLUMN tags JSONB DEFAULT '[]';
+ALTER TABLE [entity] ADD COLUMN [field] [TYPE] DEFAULT '[default]';
 
 -- 2. Backfill data if needed
-UPDATE artifacts SET tags = '["untagged"]' WHERE tags = '[]';
+UPDATE [entity] SET [field] = '[value]' WHERE [field] = '[condition]';
 
 -- 3. Make NOT NULL if needed
-ALTER TABLE artifacts ALTER COLUMN tags SET NOT NULL;
+ALTER TABLE [entity] ALTER COLUMN [field] SET NOT NULL;
 ```
 
 
@@ -494,98 +444,82 @@ ALTER TABLE artifacts ALTER COLUMN tags SET NOT NULL;
 
 **TypeScript migration example:**
 ```typescript
-// scripts/migrations/backfill-section-metadata.ts
-async function migrateArtifacts() {
-  const artifacts = await supabase
-    .from('artifacts')
-    .select('id, content')
-    .is('section_metadata', null);
-  
-  for (const artifact of artifacts) {
-    const metadata = extractSections(artifact.content);
-    
-    await supabase
-      .from('artifacts')
+// scripts/migrations/backfill-[feature].ts
+async function migrate[Entities]() {
+  const items = await db
+    .from('[entity]')
+    .select('id, [field]')
+    .is('[new_field]', null);
+
+  for (const item of items) {
+    const [derived] = extract[Data](item.[field]);
+
+    await db
+      .from('[entity]')
       .update({
-        section_metadata: metadata,
-        sections_total: metadata.length
+        [new_field]: [derived],
+        [count_field]: [derived].length
       })
-      .eq('id', artifact.id);
+      .eq('id', item.id);
   }
 }
 ```
 
-
+---
 
 ## Data Access Patterns
 
-<!-- 
-How different parts of the app access data:
-- Read patterns
-- Write patterns
-- Optimization strategies
--->
+<!-- How different parts of the app access data -->
 
-### Editor Component
+### [Component 1]
 
 **Reads:**
-- Load artifact content on mount
+- Load [entity] content on mount
 - Subscribe to real-time updates
 
 **Writes:**
-- Debounced auto-save (every 3s)
-- Update section_metadata on content change
-- Update sections_complete on "Done" toggle
+- Debounced auto-save (every [X]s)
+- Update [metadata] on content change
+- Update [counts] on [action]
 
 
-### Chat Component
+### [Component 2]
 
 **Reads:**
-- Load message history on mount
-- Subscribe to new messages
+- Load [entity] history on mount
+- Subscribe to new [entities]
 
 **Writes:**
-- Insert user message
-- Insert assistant message (streaming)
-- Update artifact (if agent modifies)
+- Insert user [entity]
+- Insert [source] [entity] (streaming)
+- Update [related entity] (if [source] modifies)
 
 
-### Sidebar Component
+### [Component 3]
 
 **Reads:**
-- Load all artifacts for current stage
-- Subscribe to artifact updates (progress)
+- Load all [entities] for current [context]
+- Subscribe to [entity] updates ([field])
 
 **Writes:**
 - None (read-only)
-
-
 
 ---
 
 ## Open Questions
 
-<!-- 
-Data model uncertainties to resolve:
--->
+- [ ] [Storage format question]
+- [ ] [Template/preset handling]
+- [ ] [Related entity versioning]
+- [ ] [Archive/retention policy]
+- [ ] [Data migration strategy]
 
-- [ ] Should we store Tiptap content as JSONB or TEXT?
-- [ ] How to handle artifact templates (pre-defined sections)?
-- [ ] Should Messages have their own snapshots?
-- [ ] How to archive old projects?
-- [ ] What's the data retention policy?
-- [ ]
-
+---
 
 ## Future Enhancements
 
-<!-- 
-Potential data model additions:
--->
-
-- [ ] Comments on specific sections
-- [ ] Artifact tags/categories
-- [ ] User teams and permissions
-- [ ] Audit log for all changes
-- [ ] Analytics/metrics table
-- [ ]
+- [ ] [Enhancement 1]
+- [ ] [Enhancement 2]
+- [ ] [Enhancement 3]
+- [ ] [Enhancement 4]
+- [ ] [Enhancement 5]

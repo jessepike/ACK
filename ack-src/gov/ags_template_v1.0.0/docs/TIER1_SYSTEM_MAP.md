@@ -1,20 +1,18 @@
 ---
+type: system_map
+description: "TIER 1 SYSTEM MAP"
+version: 1.0.0
+updated: 2026-01-01
+status: active
+depends_on: 
 doc_id: gov-030
 slug: tier1-system-map
-title: Tier 1 System Map
-type: system_map
+title: "Tier 1 System Map"
 tier: tier1
-status: active
 authority: binding
-version: 1.0.0
 review_status: accepted
-created: '2026-01-01'
-updated: '2026-01-01'
+created: 2026-01-01
 owner: human
-depends_on:
-- art-001
-- gov-010
-- gov-011
 ---
 # TIER 1 SYSTEM MAP
 

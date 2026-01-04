@@ -1,12 +1,13 @@
 ---
-doc_id: "rule-global-001"
-title: "Constitution"
-type: "rule_constitution"
-status: "active"
-version: "1.0.0"
-owner: "human"
-created: "2026-01-02"
-updated: "2026-01-02"
+type: rule_constitution
+description: "Constitution (Global Invariants)"
+version: 1.0.0
+updated: 2026-01-02
+status: active
+doc_id: rule-global-001
+title: Constitution
+owner: human
+created: 2026-01-02
 ---
 
 # Constitution (Global Invariants)

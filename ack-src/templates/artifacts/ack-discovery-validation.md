@@ -1,271 +1,215 @@
-# Problem & Solution Validation: ACK
-
 ---
-status: "Draft"
-created: 2025-01-01
-author: "jess@pike"
+type: artifact
+stage: discovery
+artifact: validation
+description: "Problem validation, user interviews, and solution fit assessment"
+version: 1.0.0
+updated: "2026-01-04T09:26:12"
+status: draft
+---
+
+# [Project Name] - Validation
+
+## Overview
+
+<!-- Summary of validation approach and findings -->
+
+[Brief description of validation activities conducted and key learnings]
+
 ---
 
 ## User Interviews
 
-<!-- 
-Document who you talked to:
-- Interview subjects
-- Their context/role
-- Key quotes
-- Problem severity
-
-Aim for 5-10 interviews minimum for early validation
--->
+<!-- Document interview findings -->
 
 ### Interview Summary
 
 | # | Name/Alias | Role | Company Type | Date | Key Pain Point |
 |---|------------|------|--------------|------|----------------|
-| 1 |            |      |              |      |                |
-| 2 |            |      |              |      |                |
-| 3 |            |      |              |      |                |
-| 4 |            |      |              |      |                |
-| 5 |            |      |              |      |                |
+| 1 | | | | | |
+| 2 | | | | | |
+| 3 | | | | | |
+| 4 | | | | | |
+| 5 | | | | | |
 
 
 ### Interview #1: [Name/Alias]
 
 **Context:**
-- Role:
-- Company:
-- Tech stack:
-- Team size:
+- Role: [Job title]
+- Company: [Type/size]
+- Tech stack: [Relevant tools]
+- Team size: [Number]
 
-**Current workflow:**
-
+**Current workflow:** [How they work today]
 
 **Pain points identified:**
-1. 
-2. 
-3. 
+1. [Pain point]
+2. [Pain point]
+3. [Pain point]
 
 **Key quotes:**
-> "..."
+> "[Quote from interview]"
 
-> "..."
+> "[Quote from interview]"
 
 **Severity:** [High / Medium / Low]
 
-**Would use ACK?** [Yes / Maybe / No]
+**Would use [Project Name]?** [Yes / Maybe / No]
 
 
 ### Interview #2: [Name/Alias]
 
 **Context:**
-- Role:
-- Company:
-- Tech stack:
-- Team size:
+- Role: [Job title]
+- Company: [Type/size]
 
-**Current workflow:**
-
+**Current workflow:** [How they work today]
 
 **Pain points identified:**
-1. 
-2. 
+1. [Pain point]
+2. [Pain point]
 
 **Key quotes:**
-> "..."
+> "[Quote from interview]"
 
 **Severity:** [High / Medium / Low]
 
-**Would use ACK?** [Yes / Maybe / No]
+**Would use [Project Name]?** [Yes / Maybe / No]
 
-
-<!-- Repeat for additional interviews -->
-
-
+---
 
 ## Problem Validation
 
-<!-- 
-Synthesize findings:
-- Do these problems actually exist?
-- How severe are they?
-- Who experiences them most?
-- What are people doing now?
-
-Quantify where possible
--->
+<!-- Synthesis of findings -->
 
 ### Problem Severity Analysis
 
-**Problem #1: Context switching between docs and IDE**
-- **Frequency:** [How often does this occur?]
-- **Impact:** [What does it cost in time/quality?]
-- **Who experiences it:** [Which roles/team sizes?]
+**Problem #1: [Problem name]**
+- **Frequency:** [How often?]
+- **Impact:** [Cost in time/quality/money]
+- **Who experiences it:** [Roles/team sizes]
 - **Current solutions:** [What do they do now?]
-- **Validation score:** [0-10, based on interviews]
+- **Validation score:** [0-10]
 
-
-**Problem #2: Stale documentation**
-- **Frequency:**
-- **Impact:**
-- **Who experiences it:**
-- **Current solutions:**
-- **Validation score:**
-
-
-**Problem #3: PM/Engineer handoff friction**
-- **Frequency:**
-- **Impact:**
-- **Who experiences it:**
-- **Current solutions:**
-- **Validation score:**
+**Problem #2: [Problem name]**
+- **Frequency:** [How often?]
+- **Impact:** [Cost in time/quality/money]
+- **Who experiences it:** [Roles/team sizes]
+- **Current solutions:** [What do they do now?]
+- **Validation score:** [0-10]
 
 
 ### Key Findings
 
 **Validated assumptions:**
-- ✓ 
-- ✓ 
-- ✓ 
+- [Assumption that was confirmed]
+- [Assumption that was confirmed]
 
 **Invalidated assumptions:**
-- ✗ 
-- ✗ 
+- [Assumption that was wrong]
+- [Assumption that was wrong]
 
 **Surprises/unexpected learnings:**
-- 
-- 
+- [Surprise finding]
+- [Surprise finding]
 
-
+---
 
 ## Solution Fit
 
-<!-- 
-Would ACK solve their problems?
-- Show concept to interviewees
-- Get feedback on proposed features
-- Identify must-haves vs. nice-to-haves
-- Understand adoption barriers
--->
+<!-- Would the proposed solution work? -->
 
 ### Feature Validation
 
 | Feature | Interest Level | Would Pay For? | Priority | Notes |
 |---------|----------------|----------------|----------|-------|
-| Living documentation | High/Med/Low | Yes/No/Maybe | P0/P1/P2 | |
-| Agent orchestration | | | | |
-| Context-aware validation | | | | |
-| [Feature] | | | | |
-| [Feature] | | | | |
+| [Feature 1] | High/Med/Low | Yes/No/Maybe | P0/P1/P2 | |
+| [Feature 2] | | | | |
+| [Feature 3] | | | | |
 
 
 ### Willingness to Adopt
 
 **Would switch from current tool:**
-- Yes (immediate): X people
-- Yes (eventually): X people
-- Maybe: X people
-- No: X people
+- Yes (immediate): [X] people
+- Yes (eventually): [X] people
+- Maybe: [X] people
+- No: [X] people
 
 **Reasons for hesitation:**
-1. 
-2. 
-3. 
+1. [Concern]
+2. [Concern]
 
 **Deal breakers identified:**
-- 
-- 
+- [Deal breaker]
 
 
 ### Pricing Sensitivity
 
 **What would you pay monthly?**
-- Free only: X people
-- $10-20: X people
-- $20-50: X people
-- $50-100: X people
-- $100+: X people
-
-**Value perception:**
-> "I'd pay $X because..."
-
-
+- Free only: [X] people
+- $[X-Y]: [X] people
+- $[X-Y]: [X] people
+- $[X]+: [X] people
 
 ---
 
 ## Validation Methodology
 
-<!-- 
-How did you validate?
-- Interview scripts
-- Demo approach
-- Testing methods
--->
+<!-- How was validation conducted? -->
 
 ### Interview Script
 
-**Introduction:**
-
-
 **Problem discovery questions:**
-1. How do you currently plan new features/projects?
-2. What tools do you use?
-3. What frustrates you about the process?
-4. How much time do you spend on [specific pain point]?
-5. 
+1. [Question about current workflow]
+2. [Question about pain points]
+3. [Question about time/cost impact]
+4. [Question about current solutions]
 
-**Solution presentation:**
-[How did you show ACK concept?]
+**Solution presentation:** [How concept was shown]
 
 **Feedback questions:**
 1. Would this solve your problem?
 2. What's missing?
-3. What would you use most?
-4. What would prevent you from using this?
-
-
-### Next Validation Steps
-
-<!-- 
-What still needs validation?
--->
-
-- [ ] Build clickable prototype and test with 5 users
-- [ ] Run pricing survey with broader audience
-- [ ] Test onboarding flow with 3 users
-- [ ] Validate [specific assumption]
-- [ ] 
-
+3. What would prevent you from using this?
 
 ---
 
 ## Risk Assessment
 
-<!-- 
-What could invalidate this product?
--->
+<!-- What could invalidate the product? -->
 
 **Market risks:**
-- 
-- 
+- [Risk and likelihood]
+- [Risk and likelihood]
 
 **Product risks:**
-- 
-- 
+- [Risk and likelihood]
+- [Risk and likelihood]
 
 **Adoption risks:**
-- 
-- 
+- [Risk and likelihood]
+- [Risk and likelihood]
 
 **Mitigation strategies:**
-1. 
-2. 
-3. 
-
+1. [Strategy for key risk]
+2. [Strategy for key risk]
 
 ---
 
-**Agent help wanted:**
-- [ ] Parse interview transcripts and extract themes
-- [ ] Identify common pain points across interviews
-- [ ] Suggest additional validation questions
-- [ ] Build summary dashboard of validation metrics
+## Next Validation Steps
+
+<!-- What still needs validation? -->
+
+- [ ] [Validation activity]
+- [ ] [Validation activity]
+- [ ] [Assumption to test]
+
+---
+
+## Open Questions
+
+- [ ] [Validation question]
+- [ ] [Finding to investigate further]
+- [ ] [User segment to explore]

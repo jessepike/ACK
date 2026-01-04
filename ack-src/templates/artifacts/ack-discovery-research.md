@@ -1,240 +1,165 @@
-# Market Research: ACK
-
 ---
-status: "Draft"
-created: 2025-01-01
-author: "jess@pike"
+type: artifact
+stage: discovery
+artifact: research
+description: "Market landscape, competitive analysis, and opportunity assessment"
+version: 1.0.0
+updated: "2026-01-04T09:26:12"
+status: draft
+---
+
+# [Project Name] - Market Research
+
+## Overview
+
+<!-- Summary of research goals and findings -->
+
+[Brief description of what research was conducted and key findings]
+
 ---
 
 ## Market Landscape
 
-<!-- 
-Overview of the market space:
-- What category does ACK fit into?
-- How big is the market?
-- Who are the key players?
-- What trends are relevant?
+<!-- Overview of the market space -->
 
-Include a simple categorization table if helpful
--->
+**Market category:** [Category name]
 
-**Market category:**
-
-
-**Market size:**
-
+**Market size:** [Estimated size and source]
 
 **Key trends:**
-- 
-- 
-- 
-
+- [Trend 1]
+- [Trend 2]
+- [Trend 3]
 
 **Market segments:**
 
-| Segment | Description | Size | Relevance to ACK |
-|---------|-------------|------|------------------|
-|         |             |      |                  |
-|         |             |      |                  |
-|         |             |      |                  |
+| Segment | Description | Size | Relevance |
+|---------|-------------|------|-----------|
+| [Segment 1] | [Description] | [Size] | [High/Medium/Low] |
+| [Segment 2] | [Description] | [Size] | [High/Medium/Low] |
+| [Segment 3] | [Description] | [Size] | [High/Medium/Low] |
 
-
+---
 
 ## Competitive Analysis
 
-<!-- 
-Direct and indirect competitors:
-- What tools exist in this space?
-- How do they work?
-- What are their strengths/weaknesses?
-- Where are the gaps?
+<!-- Direct and indirect competitors -->
 
-Focus on 3-5 primary competitors
--->
+### [Competitor 1]
 
-### Cursor
-
-**What it does:**
-
+**What it does:** [Brief description]
 
 **Strengths:**
-- 
-- 
-- 
+- [Strength 1]
+- [Strength 2]
 
 **Weaknesses:**
-- 
-- 
-- 
+- [Weakness 1]
+- [Weakness 2]
 
-**Differentiation from ACK:**
-
+**Differentiation:** [How our project differs]
 
 
-### Cline (formerly Claude Dev)
+### [Competitor 2]
 
-**What it does:**
-
+**What it does:** [Brief description]
 
 **Strengths:**
-- 
-- 
+- [Strength 1]
+- [Strength 2]
 
 **Weaknesses:**
-- 
-- 
+- [Weakness 1]
+- [Weakness 2]
 
-**Differentiation from ACK:**
-
+**Differentiation:** [How our project differs]
 
 
 ### [Competitor 3]
 
-**What it does:**
-
+**What it does:** [Brief description]
 
 **Strengths:**
-- 
+- [Strength 1]
 
 **Weaknesses:**
-- 
+- [Weakness 1]
 
-**Differentiation from ACK:**
+**Differentiation:** [How our project differs]
 
+---
 
+## Feature Comparison
 
-### Feature Comparison Matrix
+<!-- Side-by-side comparison -->
 
-<!-- Create a comparison table of key features -->
+| Feature | Our Project | [Competitor 1] | [Competitor 2] | [Competitor 3] |
+|---------|-------------|----------------|----------------|----------------|
+| [Feature 1] | [Yes/No/Partial] | | | |
+| [Feature 2] | | | | |
+| [Feature 3] | | | | |
+| [Feature 4] | | | | |
 
-| Feature | ACK | Cursor | Cline | [Other] |
-|---------|-----|--------|-------|---------|
-| Planning layer | ✓ | ✗ | ✗ | |
-| Agent orchestration | ✓ | | | |
-| Context awareness | ✓ | | | |
-| [Feature] | | | | |
-| [Feature] | | | | |
-
-
+---
 
 ## Differentiation
 
-<!-- 
-What makes ACK unique?
-- Core differentiators
-- Defensible advantages
-- Why these matter to users
+<!-- What makes this unique? -->
 
-This should be crisp and memorable
--->
+**Core differentiators:**
 
-**ACK's unique value:**
+1. **[Differentiator 1]:** [Why this matters]
 
-1. **[Differentiator 1]:**
-   
+2. **[Differentiator 2]:** [Why this matters]
 
-2. **[Differentiator 2]:**
-   
+3. **[Differentiator 3]:** [Why this matters]
 
-3. **[Differentiator 3]:**
-   
-
-
-**Why this matters:**
-
-
-
+---
 
 ## Market Opportunity
 
-<!-- 
-TAM/SAM/SOM analysis:
-- Total Addressable Market
-- Serviceable Available Market
-- Serviceable Obtainable Market
-
-Include assumptions and sources
--->
+<!-- TAM/SAM/SOM analysis -->
 
 ### Market Sizing
 
 **Total Addressable Market (TAM):**
-- 
-- 
-- **Estimate:**
-
+- [Calculation/estimate]
+- **Estimate:** $[X]
 
 **Serviceable Available Market (SAM):**
-- 
-- 
-- **Estimate:**
-
+- [Calculation/estimate]
+- **Estimate:** $[X]
 
 **Serviceable Obtainable Market (SOM - Year 1):**
-- 
-- 
-- **Estimate:**
-
+- [Calculation/estimate]
+- **Estimate:** $[X]
 
 ### Target Segments (Priority Order)
 
 1. **[Segment 1]:**
-   - Size:
-   - Why target:
-   - GTM approach:
+   - Size: [X]
+   - Why target: [Rationale]
+   - GTM approach: [Strategy]
 
 2. **[Segment 2]:**
-   - Size:
-   - Why target:
-   - GTM approach:
-
-3. **[Segment 3]:**
-   - Size:
-   - Why target:
-   - GTM approach:
-
-
+   - Size: [X]
+   - Why target: [Rationale]
+   - GTM approach: [Strategy]
 
 ---
 
 ## Research Sources
 
-<!-- 
-Track where information came from:
-- Competitor docs
-- Market reports
-- User interviews
-- Articles/blogs
+<!-- Documentation of sources -->
 
-This helps with validation and updates
--->
-
-- [ ] Cursor documentation: https://cursor.com/docs
-- [ ] Cline GitHub: https://github.com/...
-- [ ] Market report: [Name, Date]
-- [ ] User interview: [Person, Date]
-- [ ] Article: [Title, Source, Date]
-
-
-## Questions to Investigate
-
-<!-- 
-Open research questions:
-- Things to validate
-- Data to gather
-- People to talk to
--->
-
-- [ ] What is Cursor's pricing model?
-- [ ] How do developers currently plan projects?
-- [ ] What tools do PM/Eng teams use for handoffs?
-- [ ] 
-- [ ] 
-
+- [ ] [Source 1]: [URL/Reference]
+- [ ] [Source 2]: [URL/Reference]
+- [ ] [Source 3]: [URL/Reference]
 
 ---
 
-**Agent help wanted:**
-- [ ] Auto-fetch latest Cursor/Cline docs and summarize changes
-- [ ] Build comparison table from competitor docs
-- [ ] Track market size estimates from multiple sources
+## Open Questions
+
+- [ ] [Research question to investigate]
+- [ ] [Data to gather]
+- [ ] [Assumption to validate]

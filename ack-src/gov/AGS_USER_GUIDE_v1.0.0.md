@@ -1,3 +1,10 @@
+---
+type: guide
+description: "AGS User Guide (v1.0.0)"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # AGS User Guide (v1.0.0)
 
 ## What This Is

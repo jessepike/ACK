@@ -1,18 +1,18 @@
 ---
+type: runbook
+description: GOVERNANCE_GIT.md
+version: 1.0.0
+updated: 2026-01-01
+status: active
+depends_on: 
 doc_id: gov-010
 slug: governance-git
-title: Governance via Git
-type: runbook
+title: "Governance via Git"
 tier: tier1
-status: active
 authority: binding
-version: 1.0.0
 review_status: accepted
-created: '2026-01-01'
-updated: '2026-01-01'
+created: 2026-01-01
 owner: human
-depends_on:
-- gov-011
 ---
 # GOVERNANCE_GIT.md
 

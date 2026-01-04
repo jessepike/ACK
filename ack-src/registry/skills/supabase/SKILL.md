@@ -1,7 +1,9 @@
 ---
-name: supabase
-description: Supabase database, auth, and Edge Functions procedures
+type: skill
+description: "Supabase database, auth, and Edge Functions procedures"
 version: 1.0.0
+updated: "2026-01-04T09:26:12"
+name: supabase
 ---
 
 # Supabase Skill

@@ -1,3 +1,10 @@
+---
+type: guide
+description: "Primitives Reference"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # Primitives Reference
 
 Quick reference for understanding and using the Claude Registry.

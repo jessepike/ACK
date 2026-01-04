@@ -1,3 +1,10 @@
+---
+type: template
+description: "Repo Standards (Solo Dev)"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # Repo Standards (Solo Dev)
 
 ## running cookie cutter project setups

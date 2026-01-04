@@ -1,17 +1,18 @@
 ---
-doc_id: "tool-004"
-slug: "github"
-title: "GitHub Tool"
-type: "tool"
-tier: "tier1"
-status: "active"
-authority: "binding"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-02"
-updated: "2026-01-02"
-owner: "human"
+type: tool
+description: "GitHub Tool"
+version: 0.1.0
+updated: 2026-01-02
+status: active
 depends_on: []
+doc_id: tool-004
+slug: github
+title: "GitHub Tool"
+tier: tier1
+authority: binding
+review_status: draft
+created: 2026-01-02
+owner: human
 ---
 
 # GitHub Tool

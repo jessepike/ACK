@@ -1,21 +1,19 @@
 ---
-doc_id: "cmd-006"
-slug: "branch"
+type: command
+description: "Branch Command"
+version: 0.1.0
+updated: 2026-01-01
+status: active
+depends_on: "["prompt-005"]"
+doc_id: cmd-006
+slug: branch
 title: "Branch Command"
-type: "command"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
-depends_on: ["prompt-005"]
-triggers:
-  - /branch
-  - create branch
-  - new branch name
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-01
+owner: human
+triggers: 
 ---
 
 # Branch Command

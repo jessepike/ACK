@@ -1,421 +1,294 @@
-# System Architecture: ACK
-
 ---
-status: "Draft"
-created: 2025-01-01
-author: "jess@pike"
-stage: "design"
+type: artifact
+stage: design
+artifact: architecture
+description: "System architecture, components, and data flow"
+version: 1.0.0
+updated: "2026-01-04T09:26:12"
+status: draft
+---
+
+# [Project Name] - Architecture
+
+## Overview
+
+<!-- High-level system design summary -->
+
+[Brief description of the overall architecture approach and key design decisions]
+
 ---
 
 ## High-Level Architecture
 
-<!-- 
-Big picture system design:
-- Major components
-- How they interact
-- Data flow
-- Deployment topology
--->
+<!-- Big picture system design -->
 
 ### Architecture Diagram
 
 ```
-[Create ASCII or link to diagram]
+[ASCII diagram or link to diagram]
 
 ┌─────────────────────────────────────────────────┐
-│                  Browser (Client)                │
+│                  [Layer 1]                       │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐      │
-│  │ Sidebar  │  │  Editor  │  │   Chat   │      │
-│  │  (React) │  │ (Tiptap) │  │  (React) │      │
+│  │[Component]│  │[Component]│  │[Component]│    │
 │  └──────────┘  └──────────┘  └──────────┘      │
-│         │              │              │          │
-└─────────┼──────────────┼──────────────┼─────────┘
-          │              │              │
-          └──────────────┴──────────────┘
+└─────────────────────────────────────────────────┘
                          ↓
           ┌──────────────────────────────┐
-          │   Next.js Server (Vercel)    │
-          │   - API Routes               │
-          │   - Server Components        │
+          │        [Layer 2]              │
+          │   - [Responsibility]          │
+          │   - [Responsibility]          │
           └──────────────────────────────┘
                          ↓
           ┌──────────────┴──────────────┐
           ↓                              ↓
 ┌────────────────────┐        ┌────────────────────┐
-│  Supabase          │        │  Anthropic API     │
-│  - PostgreSQL      │        │  - Claude          │
-│  - Auth            │        │  - Agent calls     │
-│  - Realtime        │        └────────────────────┘
-│  - Storage         │
-└────────────────────┘
+│  [Service 1]       │        │  [Service 2]       │
+│  - [Detail]        │        │  - [Detail]        │
+│  - [Detail]        │        │  - [Detail]        │
+└────────────────────┘        └────────────────────┘
 ```
 
 ### Component Responsibilities
 
-**Client (Browser):**
-- 
-- 
-- 
+**[Layer/Component 1]:**
+- [Responsibility]
+- [Responsibility]
+- [Responsibility]
 
-**Server (Next.js):**
-- 
-- 
-- 
+**[Layer/Component 2]:**
+- [Responsibility]
+- [Responsibility]
 
-**Database (Supabase):**
-- 
-- 
-- 
+**[Layer/Component 3]:**
+- [Responsibility]
+- [Responsibility]
 
-**AI (Anthropic):**
-- 
-- 
-- 
-
-
+---
 
 ## Application Structure
 
-<!-- 
-Code organization:
-- Directory structure
-- Module boundaries
-- Component hierarchy
--->
+<!-- Code organization -->
 
 ### Directory Layout
 
 ```
-/ack-mvp/
-├── /app/                    # Next.js app directory
-│   ├── /projects/           # Projects routes
-│   │   └── /[id]/          # Project detail
-│   ├── /api/               # API routes
-│   └── layout.tsx          # Root layout
+/[project-name]/
+├── /[directory-1]/          # [Purpose]
+│   ├── /[subdirectory]/     # [Purpose]
+│   └── [file]               # [Purpose]
 │
-├── /components/            # React components
-│   ├── /ui/               # Reusable UI components
-│   ├── /editor/           # Tiptap editor components
-│   ├── /sidebar/          # File tree components
-│   └── /chat/             # Chat panel components
+├── /[directory-2]/          # [Purpose]
+│   ├── /[subdirectory]/     # [Purpose]
+│   └── /[subdirectory]/     # [Purpose]
 │
-├── /lib/                  # Utilities & helpers
-│   ├── /supabase/         # Supabase client & queries
-│   ├── /tiptap/           # Tiptap config & extensions
-│   └── /agents/           # Agent orchestration
+├── /[directory-3]/          # [Purpose]
+│   └── /[subdirectory]/     # [Purpose]
 │
-├── /types/                # TypeScript types
-├── /hooks/                # Custom React hooks
-├── /config/               # Configuration files
-└── /public/               # Static assets
+├── /[directory-4]/          # [Purpose]
+└── /[directory-5]/          # [Purpose]
 ```
 
 ### Module Boundaries
 
-**Editor module:**
-- Responsibilities:
-- Dependencies:
-- Exports:
+**[Module 1]:**
+- Responsibilities: [What it does]
+- Dependencies: [What it needs]
+- Exports: [What it provides]
 
-**Agent module:**
-- Responsibilities:
-- Dependencies:
-- Exports:
+**[Module 2]:**
+- Responsibilities: [What it does]
+- Dependencies: [What it needs]
+- Exports: [What it provides]
 
-**Data module:**
-- Responsibilities:
-- Dependencies:
-- Exports:
-
-
+---
 
 ## Data Flow
 
-<!-- 
-How data moves through the system:
-- User actions → state updates
-- State updates → database
-- Agent responses → UI
-- Real-time updates
--->
+<!-- How data moves through the system -->
 
-### User Edit Flow
+### [Flow 1]: [Name]
 
 ```
-1. User types in editor
+1. [Step 1]
    ↓
-2. Tiptap onChange fires
+2. [Step 2]
    ↓
-3. Debounced auto-save (3s)
+3. [Step 3]
    ↓
-4. Update Supabase (content + metadata)
+4. [Step 4]
    ↓
-5. Update local state
-   ↓
-6. UI shows "Saved" indicator
+5. [Step 5]
 ```
 
-### Agent Interaction Flow
+### [Flow 2]: [Name]
 
 ```
-1. User sends message
+1. [Step 1]
    ↓
-2. Load artifact context
+2. [Step 2]
    ↓
-3. Build agent prompt
-   ↓
-4. Create snapshot (pre-change)
-   ↓
-5. Call Anthropic API
-   ↓
-6. Stream response to UI
-   ↓
-7. Parse agent output
-   ↓
-8. Update artifact if needed
-   ↓
-9. Save to database
+3. [Step 3]
 ```
 
-### Real-time Sync Flow
-
-```
-1. User A updates artifact
-   ↓
-2. Supabase UPDATE triggers
-   ↓
-3. Realtime event broadcasts
-   ↓
-4. User B receives update
-   ↓
-5. Local state merges changes
-   ↓
-6. UI re-renders
-```
-
-
+---
 
 ## State Management
 
-<!-- 
-How is application state managed?
-- Client state
-- Server state
-- Sync strategy
-- Cache strategy
--->
+<!-- How is application state managed? -->
 
 ### Client State
 
-**Tool:** 
-
+**Tool:** [State management solution]
 
 **State structure:**
 ```typescript
 {
-  currentProject: Project | null,
-  currentArtifact: Artifact | null,
-  currentSection: string | null,
-  unsavedChanges: boolean,
+  [stateKey]: [Type],
+  [stateKey]: [Type],
   // ...
 }
 ```
 
 **State update patterns:**
-- 
-- 
+- [Pattern 1]
+- [Pattern 2]
 
 
-### Server State (Database)
+### Server State
 
 **Cache strategy:**
-- What gets cached:
-- Cache invalidation:
-- Cache duration:
-
+- What gets cached: [Items]
+- Cache invalidation: [Strategy]
+- Cache duration: [Duration]
 
 **Optimistic updates:**
-- When to use:
-- Rollback strategy:
+- When to use: [Scenarios]
+- Rollback strategy: [Approach]
 
-
+---
 
 ## API Design
 
-<!-- 
-API routes and contracts:
-- REST endpoints (or GraphQL schema)
-- Request/response formats
-- Authentication
-- Error handling
--->
+<!-- API routes and contracts -->
 
 ### Core Endpoints
 
-**Projects:**
-```typescript
-GET    /api/projects              // List all projects
-POST   /api/projects              // Create project
-GET    /api/projects/[id]         // Get project
-PUT    /api/projects/[id]         // Update project
-DELETE /api/projects/[id]         // Delete project
+**[Resource 1]:**
+```
+GET    /api/[resource]              # List all
+POST   /api/[resource]              # Create
+GET    /api/[resource]/[id]         # Get one
+PUT    /api/[resource]/[id]         # Update
+DELETE /api/[resource]/[id]         # Delete
 ```
 
-**Artifacts:**
-```typescript
-GET    /api/projects/[id]/artifacts           // List artifacts
-POST   /api/projects/[id]/artifacts           // Create artifact
-GET    /api/artifacts/[id]                    // Get artifact
-PUT    /api/artifacts/[id]                    // Update artifact
-PATCH  /api/artifacts/[id]/section/[slug]     // Update section
-POST   /api/artifacts/[id]/snapshot           // Create snapshot
+**[Resource 2]:**
 ```
-
-**Agents:**
-```typescript
-POST   /api/chat                  // Send message, get response
-POST   /api/agents/research       // Trigger research agent
-POST   /api/agents/validate       // Validate artifact content
+GET    /api/[resource]              # List all
+POST   /api/[resource]              # Create
 ```
 
 ### Request/Response Examples
 
-**Update section:**
+**[Example operation]:**
 ```typescript
 // Request
-PATCH /api/artifacts/abc123/section/what-is-it
+[METHOD] /api/[endpoint]
 {
-  "content": { /* Tiptap JSON */ },
-  "is_done": true
+  "[field]": "[value]"
 }
 
 // Response
 {
   "success": true,
-  "artifact": {
-    "sections_complete": 3,
-    "sections_total": 6,
-    "updated_at": "2025-01-01T12:00:00Z"
-  }
+  "[field]": "[value]"
 }
 ```
 
-
+---
 
 ## Security Architecture
 
-<!-- 
-How is the system secured?
-- Authentication
-- Authorization
-- Data protection
-- API security
--->
+<!-- How is the system secured? -->
 
 ### Authentication
 
-**Method:**
-
+**Method:** [Auth method]
 
 **Flow:**
-1. 
-2. 
-3. 
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
 
 
 ### Authorization
 
-**Row Level Security (RLS):**
-```sql
--- Example policy
-CREATE POLICY "Users can only see their own projects"
-ON projects FOR SELECT
-USING (auth.uid() = created_by);
-```
+**Access control:**
+- [Rule 1]
+- [Rule 2]
 
 **API middleware:**
-- 
-- 
+- [Middleware 1]
+- [Middleware 2]
 
 
 ### Data Protection
 
 **Sensitive data:**
-- How stored:
-- How transmitted:
-- Encryption:
+- How stored: [Method]
+- How transmitted: [Method]
+- Encryption: [Method]
 
-
-**API keys:**
-- Where stored:
-- Rotation strategy:
-
-
+---
 
 ## Performance Architecture
 
-<!-- 
-Performance optimization strategies:
-- Caching
-- Lazy loading
-- Code splitting
-- Database indexes
--->
+<!-- Performance optimization strategies -->
 
 ### Client Performance
 
-**Code splitting:**
-- 
-- 
+**Code splitting:** [Strategy]
 
-**Lazy loading:**
-- 
-- 
+**Lazy loading:** [Strategy]
 
-**Bundle size target:**
+**Bundle size target:** [Target]
 
 
 ### Server Performance
 
 **Database optimization:**
-- Indexes on:
-- Query patterns:
-- Connection pooling:
-
+- Indexes on: [Fields]
+- Query patterns: [Patterns]
+- Connection pooling: [Configuration]
 
 **API response times:**
+
 | Endpoint | Target | Current |
 |----------|--------|---------|
-| GET artifact | < 100ms | |
-| UPDATE artifact | < 200ms | |
-| Agent chat | < 5s | |
+| [Endpoint 1] | < [X]ms | |
+| [Endpoint 2] | < [X]ms | |
+| [Endpoint 3] | < [X]s | |
 
-
+---
 
 ## Error Handling & Resilience
 
-<!-- 
-How does the system handle failures?
-- Error boundaries
-- Retry logic
-- Fallbacks
-- User feedback
--->
+<!-- How does the system handle failures? -->
 
 ### Error Boundaries
 
 **Client errors:**
-- React error boundaries at:
-- Fallback UI:
-- Error reporting:
-
+- Error boundaries at: [Locations]
+- Fallback UI: [Description]
+- Error reporting: [Service]
 
 **API errors:**
 ```typescript
 {
   "error": {
-    "code": "ARTIFACT_NOT_FOUND",
-    "message": "Artifact abc123 not found",
+    "code": "[ERROR_CODE]",
+    "message": "[Human-readable message]",
     "details": {}
   }
 }
@@ -424,148 +297,102 @@ How does the system handle failures?
 ### Retry Logic
 
 **Network failures:**
-- Auto-retry:
-- Backoff strategy:
-- Max retries:
+- Auto-retry: [Yes/No]
+- Backoff strategy: [Strategy]
+- Max retries: [Number]
 
-
-**Agent API failures:**
-- Fallback provider:
-- Rate limit handling:
-- Timeout handling:
-
-
+---
 
 ## Scalability Considerations
 
-<!-- 
-How will this scale?
-- Bottlenecks identified
-- Horizontal vs vertical scaling
-- Database scaling
-- Cost implications
--->
+<!-- How will this scale? -->
 
 ### Current Bottlenecks
 
 1. **[Bottleneck]:**
-   - Impact:
-   - Mitigation:
-   - Scale threshold:
-
-2. **[Bottleneck]:**
-   - Impact:
-   - Mitigation:
-   - Scale threshold:
-
+   - Impact: [Description]
+   - Mitigation: [Strategy]
+   - Scale threshold: [When it becomes problem]
 
 ### Scaling Strategy
 
-**0-100 users:**
-- 
+**[X]-[Y] users:** [Strategy]
 
-**100-1000 users:**
-- 
+**[Y]-[Z] users:** [Strategy]
 
-**1000+ users:**
-- 
+**[Z]+ users:** [Strategy]
 
-
+---
 
 ## Monitoring & Observability
 
-<!-- 
-How do we know the system is healthy?
-- Metrics
-- Logging
-- Alerts
-- Dashboards
--->
+<!-- How do we know the system is healthy? -->
 
 ### Key Metrics
 
 **Application:**
-- Active users (DAU/WAU/MAU)
-- Session duration
-- Artifact completion rate
-- Error rate
-
+- [Metric 1]
+- [Metric 2]
+- [Metric 3]
 
 **Infrastructure:**
-- API response times
-- Database query times
-- Memory usage
-- CPU usage
+- [Metric 1]
+- [Metric 2]
 
 
 ### Logging Strategy
 
 **What to log:**
-- 
-- 
-- 
+- [Log type 1]
+- [Log type 2]
 
-**Log levels:**
-- DEBUG:
-- INFO:
-- WARN:
-- ERROR:
+**Log levels:** DEBUG, INFO, WARN, ERROR
 
 
 ### Alerts
 
-**Critical alerts:**
-- 
-- 
-- 
+**Critical:**
+- [Alert condition]
 
-**Warning alerts:**
-- 
-- 
-
-
+**Warning:**
+- [Alert condition]
 
 ---
 
-## Architecture Decision Records (ADRs)
+## Architecture Decision Records
 
-<!-- 
-Document major architectural decisions:
--->
+<!-- Document major decisions -->
 
-### ADR-001: Use Next.js App Router
-**Date:** 2025-01-01
-**Status:** Accepted
+### ADR-001: [Decision Title]
 
-**Context:**
+**Date:** [Date]
+**Status:** [Accepted/Proposed/Deprecated]
 
+**Context:** [Why this decision was needed]
 
-**Decision:**
-
+**Decision:** [What was decided]
 
 **Consequences:**
-- Positive:
-- Negative:
+- Positive: [Benefits]
+- Negative: [Tradeoffs]
 
 
-### ADR-002: Hybrid Data Model (Content + Metadata)
-**Date:** 2025-01-01
-**Status:** Accepted
+### ADR-002: [Decision Title]
 
-**Context:**
+**Date:** [Date]
+**Status:** [Accepted/Proposed/Deprecated]
 
+**Context:** [Why this decision was needed]
 
-**Decision:**
-
+**Decision:** [What was decided]
 
 **Consequences:**
-
-
+- [Consequence]
 
 ---
 
-**Open questions:**
-- [ ] How to handle concurrent edits to same artifact?
-- [ ] What happens if agent API is down?
-- [ ] How to migrate data model if schema changes?
-- [ ]
+## Open Questions
+
+- [ ] [Architecture question]
+- [ ] [Design decision to make]
+- [ ] [Scalability concern to address]

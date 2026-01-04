@@ -1,17 +1,18 @@
 ---
+type: runbook
+description: GOVERNANCE_DOCUMENT_VERSIONING.md
+version: 1.0.0
+updated: 2026-01-01
+status: active
+depends_on: []
 doc_id: gov-011
 slug: document-versioning-policy
-title: Document Versioning Policy
-type: runbook
+title: "Document Versioning Policy"
 tier: tier1
-status: active
 authority: binding
-version: 1.0.0
 review_status: accepted
-created: '2026-01-01'
-updated: '2026-01-01'
+created: 2026-01-01
 owner: human
-depends_on: []
 ---
 # GOVERNANCE_DOCUMENT_VERSIONING.md
 

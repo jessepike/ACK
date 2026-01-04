@@ -1,12 +1,13 @@
 ---
-doc_id: "prompt-mem-001"
+type: prompt
+description: "Tier-1 Memory Kit Specification Review"
+version: 1.0.0
+updated: 2026-01-02
+status: active
+doc_id: prompt-mem-001
 title: "Tier-1 Memory Kit Spec Review Prompt"
-type: "prompt"
-status: "active"
-version: "1.0.0"
-owner: "human"
-created: "2026-01-02"
-updated: "2026-01-02"
+owner: human
+created: 2026-01-02
 ---
 
 # Tier-1 Memory Kit Specification Review

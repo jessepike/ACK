@@ -1,3 +1,10 @@
+---
+type: guide
+description: "ACK Hooks - Quick Reference Card"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # ACK Hooks - Quick Reference Card
 
 **Version:** 1.0  

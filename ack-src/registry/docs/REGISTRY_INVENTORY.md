@@ -1,17 +1,18 @@
 ---
-doc_id: "inv-001"
-slug: "registry-inventory"
-title: "Agent Context Registry Inventory"
-type: "artifact_registry"
-tier: "tier1"
-status: "active"
-authority: "binding"
-version: "0.2.0"
-review_status: "draft"
-created: "2026-01-02"
-updated: "2026-01-02"
-owner: "human"
+type: artifact_registry
+description: "Agent Context Registry Inventory"
+version: 0.2.0
+updated: 2026-01-02
+status: active
 depends_on: []
+doc_id: inv-001
+slug: registry-inventory
+title: "Agent Context Registry Inventory"
+tier: tier1
+authority: binding
+review_status: draft
+created: 2026-01-02
+owner: human
 ---
 
 # Agent Context Registry Inventory

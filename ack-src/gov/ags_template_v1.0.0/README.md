@@ -1,3 +1,10 @@
+---
+type: guide
+description: "Artifact Governance System (AGS) — Template v1.0.0"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # Artifact Governance System (AGS) — Template v1.0.0
 
 This repository is a **drop-in governance harness** for AI-assisted development:

@@ -1,12 +1,13 @@
 ---
-doc_id: "rule-global-002"
-title: "Preferences"
-type: "rule_preferences"
-status: "active"
-version: "1.0.0"
-owner: "human"
-created: "2026-01-02"
-updated: "2026-01-02"
+type: rule_preferences
+description: "User Preferences"
+version: 1.0.0
+updated: 2026-01-02
+status: active
+doc_id: rule-global-002
+title: Preferences
+owner: human
+created: 2026-01-02
 ---
 
 # User Preferences

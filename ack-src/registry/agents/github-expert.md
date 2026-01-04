@@ -1,22 +1,17 @@
 ---
-# Anthropic required
-name: github-expert
+type: agent
 description: >
-  GitHub platform expert for repository management, pull requests, issues, 
-  Actions CI/CD, and GitHub API. Use when working with GitHub repos, PRs, 
-  issues, workflows, or any GitHub-specific operations.
-
-# AGS governance
-doc_id: "agent-004"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-02"
-updated: "2026-01-02"
-owner: "human"
-depends_on: ["tool-004"]
+version: 0.1.0
+updated: 2026-01-02
+status: active
+depends_on: "["tool-004"]"
+name: github-expert
+doc_id: agent-004
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-02
+owner: human
 ---
 
 # GitHub Expert Agent

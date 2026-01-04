@@ -1,23 +1,19 @@
 ---
-doc_id: "cmd-003"
-slug: "nextjs-debug"
+type: command
+description: "Next.js Debug Command"
+version: 0.1.0
+updated: 2026-01-01
+status: active
+depends_on: "["agent-003", "skill-003", "tool-003"]"
+doc_id: cmd-003
+slug: nextjs-debug
 title: "Next.js Debug Command"
-type: "command"
-tier: "tier2"
-status: "active"
-authority: "guidance"
-version: "0.1.0"
-review_status: "draft"
-created: "2026-01-01"
-updated: "2026-01-01"
-owner: "human"
-depends_on: ["agent-003", "skill-003", "tool-003"]
-triggers:
-  - /nextjs-debug
-  - next build failing
-  - hydration mismatch
-  - use client error
-  - server component error
+tier: tier2
+authority: guidance
+review_status: draft
+created: 2026-01-01
+owner: human
+triggers: 
 ---
 
 # Next.js Debug Command

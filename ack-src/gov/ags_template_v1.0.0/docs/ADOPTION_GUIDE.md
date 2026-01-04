@@ -1,19 +1,18 @@
 ---
+type: runbook
+description: "Adoption Guide"
+version: 1.0.0
+updated: 2026-01-01
+status: active
+depends_on: 
 doc_id: gov-050
 slug: adoption-guide
-title: Adoption Guide
-type: runbook
+title: "Adoption Guide"
 tier: tier2
-status: active
 authority: guidance
-version: 1.0.0
 review_status: accepted
-created: '2026-01-01'
-updated: '2026-01-01'
+created: 2026-01-01
 owner: human
-depends_on:
-- gov-010
-- gov-011
 ---
 ## Purpose
 

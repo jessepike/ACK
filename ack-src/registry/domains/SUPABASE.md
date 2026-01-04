@@ -1,3 +1,10 @@
+---
+type: domain
+description: "Supabase Domain Package"
+version: 0.1.0
+updated: "2026-01-04T09:26:12"
+---
+
 # Supabase Domain Package
 
 **Purpose:** Database design, auth, RLS, Edge Functions, real-time
