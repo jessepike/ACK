@@ -1,0 +1,33 @@
+# ADR-TEMPLATE.yaml
+# Copy to ADR-###.yaml and fill in.
+
+adr_id: "ADR-000"
+slug: "decision-slug"
+title: "Decision title"
+
+status: "proposed"          # proposed|accepted|rejected|deprecated
+date: "2026-01-01"          # YYYY-MM-DD
+
+type: "architecture"        # architecture|data|security|scope|process
+authority: "binding"        # binding|guidance
+
+impacts:
+  - "arch-001"
+
+context: >
+  What problem/trigger caused this decision?
+
+decision: >
+  The decision statement (what we will do).
+
+consequences:
+  positive:
+    - ""
+  negative:
+    - ""
+  followups:
+    - ""
+
+alternatives: []
+supersedes: []
+references: []

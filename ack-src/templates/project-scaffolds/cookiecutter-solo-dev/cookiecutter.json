@@ -1,0 +1,39 @@
+{
+  "project_slug": "my_project",
+  "project_name": "My Project",
+  "project_type": [
+    "node_nextjs_app",
+    "python_fastapi_api",
+    "shared_lib_python",
+    "shared_lib_ts"
+  ],
+  "author_name": "Your Name",
+  "org_or_biz": "my_org",
+  "license": [
+    "MIT",
+    "UNLICENSED"
+  ],
+  "use_docker": [
+    "yes",
+    "no"
+  ],
+  "use_github_actions_ci": [
+    "yes",
+    "no"
+  ],
+  "python_version": "3.12.1",
+  "node_version": "20.19.6",
+  "package_manager": [
+    "pnpm",
+    "npm",
+    "yarn"
+  ],
+  "include_adr": [
+    "yes",
+    "no"
+  ],
+  "include_precommit": [
+    "yes",
+    "no"
+  ]
+}

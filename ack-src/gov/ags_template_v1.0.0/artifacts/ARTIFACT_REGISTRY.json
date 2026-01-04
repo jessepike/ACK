@@ -1,0 +1,247 @@
+{
+  "generated_by": "scripts/validate_ags.py",
+  "artifacts": [
+    {
+      "artifact_id": "gov-050",
+      "slug": "adoption-guide",
+      "title": "Adoption Guide",
+      "type": "process",
+      "tier": "tier2",
+      "format": "md",
+      "path": "docs/ADOPTION_GUIDE.md",
+      "status": "active",
+      "authority": "guidance",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": [
+        "gov-010",
+        "gov-011"
+      ]
+    },
+    {
+      "artifact_id": "gov-001",
+      "slug": "artifact-governance-summary",
+      "title": "AI-DEV Artifact Governance \u2013 Summary & First Principles",
+      "type": "process",
+      "tier": "tier1",
+      "format": "md",
+      "path": "docs/AI_DEV_ARTIFACT_GOVERNANCE_SUMMARY.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.2.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "art-001",
+      "slug": "artifact-registry",
+      "title": "Artifact Registry",
+      "type": "artifact_registry",
+      "tier": "tier1",
+      "format": "md",
+      "path": "docs/ARTIFACT_REGISTRY.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": [
+        "gov-010"
+      ]
+    },
+    {
+      "artifact_id": "gov-020",
+      "slug": "governance-backlog",
+      "title": "Governance Backlog",
+      "type": "process",
+      "tier": "tier1",
+      "format": "md",
+      "path": "docs/GOVERNANCE_BACKLOG.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.2.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "gov-011",
+      "slug": "document-versioning-policy",
+      "title": "Document Versioning Policy",
+      "type": "process",
+      "tier": "tier1",
+      "format": "md",
+      "path": "docs/GOVERNANCE_DOCUMENT_VERSIONING.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "gov-010",
+      "slug": "governance-git",
+      "title": "Governance via Git",
+      "type": "process",
+      "tier": "tier1",
+      "format": "md",
+      "path": "docs/GOVERNANCE_GIT.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.2.0",
+      "review_status": "draft",
+      "depends_on": [
+        "gov-011"
+      ]
+    },
+    {
+      "artifact_id": "gov-040",
+      "slug": "naming-conventions",
+      "title": "Naming Conventions",
+      "type": "process",
+      "tier": "tier1",
+      "format": "md",
+      "path": "docs/NAMING_CONVENTIONS.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "gov-051",
+      "slug": "round2-update-notes",
+      "title": "Round 2 Update Notes",
+      "type": "process",
+      "tier": "tier2",
+      "format": "md",
+      "path": "docs/ROUND2_UPDATE_NOTES.md",
+      "status": "active",
+      "authority": "guidance",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "gov-052",
+      "slug": "round3-update-notes",
+      "title": "Round 3 Update Notes",
+      "type": "process",
+      "tier": "tier2",
+      "format": "md",
+      "path": "docs/ROUND3_UPDATE_NOTES.md",
+      "status": "active",
+      "authority": "guidance",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "gov-031",
+      "slug": "system-map-visual",
+      "title": "System Map Visual",
+      "type": "process",
+      "tier": "tier1",
+      "format": "md",
+      "path": "docs/SYSTEM_MAP_VISUAL.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.2.0",
+      "review_status": "draft",
+      "depends_on": [
+        "gov-030",
+        "gov-020",
+        "art-001",
+        "gov-011"
+      ]
+    },
+    {
+      "artifact_id": "gov-030",
+      "slug": "tier1-system-map",
+      "title": "Tier 1 System Map",
+      "type": "process",
+      "tier": "tier1",
+      "format": "md",
+      "path": "docs/TIER1_SYSTEM_MAP.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.2.0",
+      "review_status": "draft",
+      "depends_on": [
+        "art-001",
+        "gov-010",
+        "gov-011"
+      ]
+    },
+    {
+      "artifact_id": "adr-000",
+      "slug": "adrs-readme",
+      "title": "ADRs Folder Readme",
+      "type": "adr",
+      "tier": "tier2",
+      "format": "md",
+      "path": "docs/adrs/README.md",
+      "status": "active",
+      "authority": "guidance",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "prompt-001",
+      "slug": "critical-review-prompt",
+      "title": "Critical Review Prompt",
+      "type": "prompt",
+      "tier": "tier2",
+      "format": "md",
+      "path": "prompts/CRITICAL_REVIEW_PROMPT.md",
+      "status": "active",
+      "authority": "guidance",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "spec-002",
+      "slug": "adr-yaml-schema",
+      "title": "ADR Canonical Record Schema (YAML)",
+      "type": "schema",
+      "tier": "tier1",
+      "format": "md",
+      "path": "schemas/ADR_SCHEMA_TIER1.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": []
+    },
+    {
+      "artifact_id": "spec-001",
+      "slug": "tier1-markdown-schema",
+      "title": "Tier 1 Markdown Schema",
+      "type": "schema",
+      "tier": "tier1",
+      "format": "md",
+      "path": "schemas/TIER1_FRONTMATTER_SCHEMA.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.2.0",
+      "review_status": "draft",
+      "depends_on": [
+        "gov-011"
+      ]
+    },
+    {
+      "artifact_id": "spec-003",
+      "slug": "artifact-type-vocabulary",
+      "title": "Controlled Vocabulary for Artifact Type",
+      "type": "schema",
+      "tier": "tier1",
+      "format": "md",
+      "path": "schemas/TYPE_CONTROLLED_VOCABULARY.md",
+      "status": "active",
+      "authority": "binding",
+      "version": "0.1.0",
+      "review_status": "draft",
+      "depends_on": []
+    }
+  ]
+}

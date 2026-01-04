@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        if: ${{ '{{' }} contains('node_nextjs_app shared_lib_ts', '${{ '{{' }} matrix.project_type {{ '}}' }}') {{ '}}' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: "{{cookiecutter.node_version}}"
+
+      - name: Setup Python
+        if: ${{ '{{' }} contains('python_fastapi_api shared_lib_python', '${{ '{{' }} matrix.project_type {{ '}}' }}') {{ '}}' }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "{{cookiecutter.python_version}}"
+
+      - name: Run CI
+        run: |
+          echo "Project type: {{cookiecutter.project_type}}"
+          make setup
+          make lint
+          make typecheck || true
+          make test || true

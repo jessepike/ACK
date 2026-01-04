@@ -1,0 +1,18 @@
+version: 0.1.0
+rules:
+- id: drift-001
+  name: package-json-change-requires-architecture-or-adr
+  trigger_any_changed:
+  - package.json
+  require_any_changed:
+  - docs/ARCHITECTURE.md
+  - docs/adrs/
+  message: 'package.json changed: update docs/ARCHITECTURE.md or add an ADR in docs/adrs/.'
+- id: drift-002
+  name: schema-change-requires-data-model-or-adr
+  trigger_prefix_changed:
+  - schemas/
+  require_any_changed:
+  - docs/DATA_MODEL.md
+  - docs/adrs/
+  message: 'Schema changed: update docs/DATA_MODEL.md or add an ADR in docs/adrs/.'
