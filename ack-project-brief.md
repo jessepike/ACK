@@ -1,8 +1,8 @@
 ---
 type: "project_brief"
 description: "ACK concept, scope, stages, artifact hierarchy, and MVP approach"
-version: "0.1.0"
-updated: "2026-01-03T00:00:00"
+version: "0.3.0"
+updated: "2025-01-04T00:00:00"
 
 depends_on: ["ack-intent.md"]
 ---
@@ -61,29 +61,113 @@ Catch drift before it causes damage:
 
 Work flows through 4 sequential stages with iteration back as needed:
 
-### Stage 1: Discovery
+| # | Stage | Purpose | Key Question | Deliverables |
+|---|-------|---------|--------------|--------------|
+| 1 | **Discover** | What & Why | What problem are we solving? | `brief.md` |
+| 2 | **Design** | How (technical) | How will the solution work? | `architecture.md`, `data-model.md`, `stack.md` |
+| 3 | **Setup** | Ready to execute | Are we ready to start coding? | `plan.md`, `tasks.md` |
+| 4 | **Develop** | Doing (runtime) | Is it built correctly? | (updates `tasks.md`) |
+
+**Key insight:** Stages 1-3 are planning/front-loading (before code). Stage 4 is doing (runtime).
+
+### Stage 1: Discover
 **Intent:** Validate and flesh out a concept
-**Process:** Iterative refinement + external agent review cycles
-**Output:** Project Brief
-**Exit:** Human judgment ("good enough")
+**Process:** Iterative refinement + content review cycles
+**Deliverable:** `brief.md` (flexible format adapting to feature/product/project scope)
+**Support Artifacts:** concept.md, research.md, validation.md (archived after Setup)
+**Exit:** Brief reviewed and validated
 
 ### Stage 2: Design
-**Intent:** Define WHAT we're building technically
-**Process:** Architecture design + external validation
-**Output:** Architecture.md + derivatives (data model, schemas, component designs)
-**Exit:** Technical design validated
+**Intent:** Define HOW we're building technically
+**Process:** Architecture design + content review
+**Deliverables:** `architecture.md`, `data-model.md`, `stack.md`
+**Support Artifacts:** context-schema.md, dependencies-research.md (archived after Setup)
+**Exit:** Technical design reviewed and validated
 
-### Stage 3: Setup (Environment + Workflow)
-**Intent:** Initialize everything needed for implementation
-**Process:** Scaffold project, configure agents, set up harness
-**Output:** Fully configured project ready for agents
-**Exit:** All tooling and context in place
+### Stage 3: Setup
+**Intent:** Initialize everything needed for development + create execution plan
+**Process:** Scaffold project, configure CI/CD, create implementation plan
+**Deliverables:** `plan.md`, `tasks.md`
+**Support Artifacts:** ci-cd-config.md, testing-strategy.md, git-workflow.md (archived)
+**Exit:** Repo initialized, plan complete, tasks broken down, ready to code
 
-### Stage 4: Implementation Planning
-**Intent:** Create structured plan agents execute against
-**Process:** Work with Planning Agent to create phases, milestones, tasks
-**Output:** Plan + Tasks (separate artifacts)
-**Exit:** Agents can begin execution with clear what/why/how
+### Stage 4: Develop
+**Intent:** Execute the implementation plan
+**Process:** Agents code against plan/tasks with human oversight checkpoints
+**Output:** Working software (updates `tasks.md` as work progresses)
+**Exit:** MVP complete per success criteria
+
+---
+
+## Stage Structure
+
+Each stage follows a consistent structure:
+
+```
+stages/
+├── discover/
+│   ├── README.md          # Overview, artifacts, deliverables, checklist
+│   ├── templates/         # Artifact templates (concept.md, brief.md, etc.)
+│   └── prompts/           # Stage-specific prompts
+│       ├── review.md      # Content analysis prompt
+│       └── validate.md    # Structural check prompt
+├── design/
+├── setup/
+└── develop/
+```
+
+### Two Quality Gates Per Stage
+
+| Gate | Purpose | What it checks |
+|------|---------|----------------|
+| **Review** | Content analysis | Is the brief clear? Is architecture sound? Quality of thinking |
+| **Validation** | Structural check | YAML frontmatter correct? All sections present? Format right? |
+
+**Stage flow:** Work → Review (content) → Fix → Validate (structure) → Advance
+
+### Stage Workflow Skills
+
+| Skill | Purpose |
+|-------|---------|
+| `/init-project` | Initialize `.ack/` structure, set stage to Discover |
+| `/review-stage <stage>` | Run content analysis on deliverables |
+| `/validate-stage <stage>` | Run structural check on deliverables |
+| `/advance-stage <to>` | Validate current stage, move deliverables to `docs/`, advance |
+| `/archive-planning` | Archive support artifacts to `~/.ack/archives/` |
+
+**Full workflow:**
+```
+/init-project → work → /review-stage → /validate-stage → /advance-stage → repeat
+```
+
+---
+
+## Working Directory & Archives
+
+**During Planning (Stages 1-3):**
+- Working directory: `.ack/` in project root
+- Contains stage subdirectories with work-in-progress artifacts
+- Add to `.gitignore`
+
+**After Setup Completes:**
+- Deliverables move to `/docs` in final repo
+- Support artifacts archived to `~/.ack/archives/[project-name]/`
+- Archive lives outside project so agents don't accidentally read old research
+
+**Final repo structure:**
+```
+project/
+├── docs/              # Deliverables only
+│   ├── brief.md
+│   ├── architecture.md
+│   ├── data-model.md
+│   ├── stack.md
+│   ├── plan.md
+│   └── tasks.md
+├── src/               # Application code
+├── tests/             # Test files
+└── .ack/              # Minimal - just archives-manifest.md
+```
 
 ---
 
@@ -110,18 +194,40 @@ Intent (North Star - outcome focused)
 
 ## Artifact Classification
 
-| Artifact | Type | Readability | Handoff? |
-|----------|------|-------------|----------|
-| Intent | Source | Human + Machine | Referenced, not passed |
-| Principles | Source | Human + Machine | Distilled into rules |
-| Brief | Source/Deliverable | Human + Machine | Stage 1 → Stage 2 |
-| Architecture | Source | Human + Machine | Stage 2 → Stage 3 |
-| CLAUDE.md | Derivative | Machine | Loaded every session |
-| rules/* | Derivative | Machine | Loaded every session |
-| Plan | Deliverable | Human + Machine | Stage 4 → Execution |
-| Tasks | Deliverable | Machine | Agent consumption |
-| ADRs | Supporting | Human | Reference/log |
-| Research docs | Supporting | Human | Archived |
+### Deliverables (Go to /docs)
+Required outputs that must be complete to advance. Persist in final repo.
+
+| Stage | Deliverable | Purpose |
+|-------|-------------|---------|
+| Discover | `brief.md` | What & why we're building |
+| Design | `architecture.md` | System structure and data flow |
+| Design | `data-model.md` | Database schema and relationships |
+| Design | `stack.md` | Technology choices with rationale |
+| Setup | `plan.md` | Phased implementation plan |
+| Setup | `tasks.md` | Work breakdown (updated during Develop) |
+
+### Support Artifacts (Archived)
+Working documents that inform deliverables but don't advance to next stage.
+
+| Stage | Support Artifact | Purpose |
+|-------|------------------|---------|
+| Discover | concept.md | Working concept iteration |
+| Discover | research.md | Market/competitive research |
+| Discover | validation.md | User interviews, problem validation |
+| Design | context-schema.md | Agent context structure |
+| Design | dependencies-research.md | Package evaluation |
+| Setup | ci-cd-config.md | Pipeline configuration notes |
+| Setup | testing-strategy.md | Test approach documentation |
+| Setup | git-workflow.md | Branch/PR process notes |
+
+### System Artifacts (Always Loaded)
+
+| Artifact | Type | Purpose |
+|----------|------|---------|
+| Intent | Source | North Star anchor |
+| CLAUDE.md | Derivative | Loaded every session |
+| rules/* | Derivative | Agent guardrails |
+| ADRs | Supporting | Decision log (cross-cutting) |
 
 ---
 
@@ -130,18 +236,24 @@ Intent (North Star - outcome focused)
 ### In Scope (MVP)
 - Clear structure and artifacts defined
 - Intent document as anchor
-- 4-stage model documented
-- Artifact hierarchy established
+- 4-stage model with consistent structure (README, templates, prompts per stage)
+- Artifact hierarchy established (deliverables vs support)
+- Two quality gates: Review (content) + Validation (structural)
 - Agent rules and principles
 - Tier-1 memory (context priming)
-- Manual validation workflows
-- External review prompts/templates
+- Working directory (`.ack/`) and archive (`~/.ack/archives/`) pattern
+- Stage workflow skills (all complete):
+  - `/init-project` - Initialize ACK project structure
+  - `/review-stage` - Content analysis of deliverables
+  - `/validate-stage` - Structural check for completion
+  - `/advance-stage` - Move to next stage (validates first)
+  - `/archive-planning` - Archive support artifacts after Setup
 
 ### Deferred (Backlog)
 - Automated enforcement (hooks)
 - Tier-2 memory (state tracking database)
 - Automated drift detection
-- CLI tooling
+- Advanced CLI tooling
 - Self-running validation agents
 
 ---
@@ -186,10 +298,18 @@ Intent (North Star - outcome focused)
 
 ## Open Questions
 
+### Resolved
+- ~~What's the exact structure for Plan and Tasks artifacts?~~ → Defined in Setup stage templates
+- ~~What validation is needed at each stage exit?~~ → Two gates: Review (content) + Validation (structural)
+- ~~Where do support artifacts go?~~ → Archived to `~/.ack/archives/` at Setup completion
+- ~~Stage names?~~ → Discover, Design, Setup, Develop
+
+### Still Open
 1. Should Principles be a separate artifact or part of Intent?
-2. What's the exact structure for Plan and Tasks artifacts?
-3. How do we handle iteration back up the stack (updating higher artifacts)?
-4. What validation is needed at each stage exit?
+2. How do we handle iteration back up the stack (updating higher artifacts)?
+3. How do tasks relate to features from scope?
+4. How do artifacts feed into CLAUDE.md context?
+5. Should artifacts auto-update memory tier?
 
 ---
 
@@ -204,8 +324,21 @@ Intent (North Star - outcome focused)
 
 ## Next Steps
 
-1. Review and validate this Brief (external agent review)
-2. Define canonical directory structure
-3. Clean up inbox (dedupe against existing folders)
-4. Enhance Intent document with learnings
-5. Begin Design stage (Architecture)
+### Completed
+1. ~~Review and validate this Brief~~ → Updated with new stage structure
+2. ~~Create stage README.md files~~ → 4 files created (discover, design, setup, develop)
+3. ~~Create stage prompts~~ → 8 prompts (review.md + validate.md per stage)
+4. ~~Create `brief.md` template~~ → Discover deliverable template
+5. ~~Create all stage templates~~ → 20 templates across all stages
+6. ~~Update ARTIFACT_INVENTORY.md~~ → Complete catalog of artifacts
+7. ~~Create `/review-stage` skill~~ → Content analysis
+8. ~~Create `/validate-stage` skill~~ → Structural check
+9. ~~Create `/advance-stage` skill~~ → Stage transitions
+10. ~~Create `/init-project` skill~~ → Project initialization
+11. ~~Create `/archive-planning` skill~~ → Archive support artifacts
+
+### Remaining
+1. Update project CLAUDE.md with stage workflow
+2. Clean up old stage directories (1-discovery/, 4-implementation/)
+3. Test the full workflow on a real project
+4. Document onboarding guide for new projects
