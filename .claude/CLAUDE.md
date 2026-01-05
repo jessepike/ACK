@@ -21,6 +21,33 @@ ACK enforces sequential stages - do not skip ahead:
 
 Each stage has templates in `ack-src/stages/{stage}/templates/` and validation prompts in `ack-src/stages/{stage}/prompts/`.
 
+### Stage Workflow Skills
+
+| Skill | Purpose |
+|-------|---------|
+| `/init-project` | Initialize `.ack/` structure, set stage to Discover |
+| `/review-stage <stage>` | Content analysis of deliverables |
+| `/validate-stage <stage>` | Structural check for completion |
+| `/advance-stage <to>` | Validate current stage, move to next |
+| `/archive-planning` | Archive support artifacts after Setup |
+
+**Workflow:**
+```
+/init-project → work → /review-stage → /validate-stage → /advance-stage → repeat
+```
+
+### Working Directory
+
+During planning (Stages 1-3):
+- Working directory: `.ack/` in project root
+- Contains stage subdirectories with work-in-progress
+- Add to `.gitignore`
+
+After advancing to Develop:
+- Deliverables move to `docs/`
+- Support artifacts archived to `~/.ack/archives/{project}/`
+- Archive lives outside project so agents don't read stale research
+
 ## Frontmatter Requirements
 
 Every ACK artifact MUST have YAML frontmatter with these required fields:
@@ -58,7 +85,52 @@ ack-src/                    # THE PRODUCT (reusable templates)
 tips.backlog.md            # Insights backlog (managed by slash commands)
 ```
 
+## File Placement Rules (Enforced)
+
+**IMPORTANT:** Do not create files outside the defined structure without explicit user approval.
+
+### Allowed Locations
+
+| Location | What Goes Here |
+|----------|----------------|
+| Root | ONLY: README.md, intent.md, brief.md, LICENSE, .gitignore, config files |
+| `docs/discover/` | Problem validation: concept.md, research.md, validation.md |
+| `docs/design/` | Technical specs: architecture.md, data-model.md, stack.md |
+| `docs/setup/` | Planning: plan.md, tasks.md |
+| `docs/develop/` | Runtime artifacts: ADRs |
+| `docs/guides/` | User-facing: guides, tutorials, API docs |
+| `src/` | Source code |
+| `tests/` | Test files |
+| `scripts/` | Automation scripts |
+| `inbox/` | Incoming files for review |
+| `tmp/` | Temporary files |
+| `_archive/` | Archived work |
+
+### Before Creating Any File
+
+1. Check if location matches the table above
+2. If creating at root or unknown location → **ASK USER FIRST**
+3. If user approves non-standard location → document why in the file
+
+### Enforcement
+
+- Run `/repo-check` to scan for violations
+- Run `/doc-check` to verify documentation health
+- See `.claude/rules/repo-structure.md` for full rules
+
 ## Available Slash Commands
+
+### Stage Workflow
+
+| Command | Purpose |
+|---------|---------|
+| `/init-project [name]` | Initialize ACK project with `.ack/` structure |
+| `/review-stage <stage>` | Content analysis of stage deliverables |
+| `/validate-stage <stage>` | Structural check for stage completion |
+| `/advance-stage <to>` | Move to next stage (validates first) |
+| `/archive-planning` | Archive support artifacts to `~/.ack/archives/` |
+
+### Backlog Management
 
 | Command | Purpose |
 |---------|---------|
@@ -67,11 +139,20 @@ tips.backlog.md            # Insights backlog (managed by slash commands)
 | `/backlog-stats` | Quick dashboard and analytics |
 | `/improve-ack` | Apply insights to ACK stages |
 
+### Project Maintenance
+
+| Command | Purpose |
+|---------|---------|
+| `/doc-check` | Check documentation accuracy and structure |
+| `/repo-check` | Check repository organization |
+
 ## Validation Scripts
 
 Located in `ack-src/scripts/`:
 
 - `fix-frontmatter.py` - Fix YAML frontmatter across documents
+- `doc-health.py` - Check documentation health (used by `/doc-check`)
+- `repo-structure.py` - Check repository structure (used by `/repo-check`)
 - `validate-claude-md.sh` - Validate CLAUDE.md structure
 - `check-cycles.py` - Detect circular dependencies in artifacts
 - `check-structure.sh` - Validate file placement
@@ -82,6 +163,7 @@ Located in `ack-src/scripts/`:
 |------|---------|
 | `ack-intent.md` | North Star - why ACK exists |
 | `ack-project-brief.md` | What we're building, how |
+| `ack-src/ARTIFACT_INVENTORY.md` | Complete catalog of templates and prompts |
 | `ack-src/mem/TIER1_KIT_SPEC.md` | Memory system specification |
 | `ack-src/registry/REGISTRY_INVENTORY.md` | Complete capabilities inventory |
 
