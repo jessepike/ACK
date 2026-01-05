@@ -1,6 +1,130 @@
+---
+type: "guide"
+description: "ACK slash commands for stage workflow, backlog management, and maintenance"
+version: "1.2.0"
+updated: "2025-01-04T00:00:00"
+---
+
 # ACK Skills Package
 
 Slash commands for AI-assisted development workflows.
+
+## Skills Overview
+
+### Stage Workflow
+
+| Skill | Purpose |
+|-------|---------|
+| `/review-stage` | Content analysis of stage deliverables |
+| `/validate-stage` | Structural check for stage completion |
+
+### Backlog Management
+
+| Skill | Purpose |
+|-------|---------|
+| `/extract-insights` | Add insights from URLs or files to backlog |
+| `/curate-backlog` | Review and maintain backlog priorities |
+| `/backlog-stats` | Quick dashboard and analytics |
+| `/improve-ack` | Apply insights to ACK stages |
+
+### Project Maintenance
+
+| Skill | Purpose |
+|-------|---------|
+| `/doc-check` | Check documentation accuracy and structure |
+| `/repo-check` | Check repository organization |
+
+---
+
+## Stage Workflow
+
+Skills for the 4-stage ACK workflow: Discover → Design → Setup → Develop.
+
+### Two Quality Gates
+
+Each stage has two quality gates before advancing:
+
+1. **Review** (`/review-stage`) - Content analysis
+   - Is the content clear and complete?
+   - Are decisions well-reasoned?
+   - Is quality sufficient to proceed?
+
+2. **Validate** (`/validate-stage`) - Structural check
+   - Does the file exist?
+   - Is YAML frontmatter valid?
+   - Are required sections present?
+
+### `/review-stage <stage>`
+
+Perform content analysis on stage deliverables.
+
+**Stages:** `discover`, `design`, `setup`, `develop`
+
+**What it reviews:**
+
+| Stage | Deliverables | Focus |
+|-------|--------------|-------|
+| discover | brief.md | Problem clarity, user understanding, solution fit |
+| design | architecture.md, data-model.md, stack.md | Technical soundness, consistency |
+| setup | plan.md, tasks.md | Plan coherence, task actionability |
+| develop | current work | Code quality, progress tracking |
+
+**Output:** Review report with strengths, issues, recommendations, and go/no-go assessment.
+
+**Usage:**
+```bash
+/review-stage discover    # Review the brief
+/review-stage design      # Review all design docs
+/review-stage setup       # Review plan and tasks
+```
+
+---
+
+### `/validate-stage <stage>`
+
+Perform structural validation on stage deliverables.
+
+**Stages:** `discover`, `design`, `setup`, `develop`
+
+**What it checks:**
+
+| Check | Description |
+|-------|-------------|
+| File existence | Required deliverables present |
+| YAML frontmatter | type, description, version, updated, status |
+| Required sections | Stage-specific sections present |
+| Checklist completion | All items checked or skipped |
+
+**Output:** Validation report with PASS/FAIL status and blocking issues.
+
+**Usage:**
+```bash
+/validate-stage discover  # Check brief structure
+/validate-stage design    # Check all design docs
+/validate-stage setup     # Check plan, tasks, environment
+```
+
+---
+
+### Stage Workflow Example
+
+```bash
+# 1. Complete work on Discover stage deliverables
+#    (create brief.md)
+
+# 2. Review content quality
+/review-stage discover
+#    → Fix any issues identified
+
+# 3. Validate structure
+/validate-stage discover
+#    → Must PASS to advance
+
+# 4. Move to Design stage
+#    (future: /advance-stage design)
+```
+
+---
 
 ## Backlog Management
 
@@ -14,6 +138,7 @@ A system for capturing, prioritizing, and maintaining actionable insights from e
 | `/extract-insights` | Add insights from URLs or files |
 | `/curate-backlog` | Review and maintain priorities |
 | `/backlog-stats` | Quick dashboard and analytics |
+| `/improve-ack` | Apply insights to ACK stages |
 
 ---
 
@@ -31,6 +156,10 @@ A system for capturing, prioritizing, and maintaining actionable insights from e
 
 # Review stale items
 /curate-backlog review
+
+# Analyze improvements and apply to ACK
+/improve-ack analyze
+/improve-ack apply "Tip Title"
 ```
 
 ---
@@ -102,6 +231,34 @@ Quick analytics and health indicators.
 
 ---
 
+### `/improve-ack [action] [args]`
+
+Apply backlog insights to ACK stages.
+
+**Actions:**
+
+| Action | Usage | Description |
+|--------|-------|-------------|
+| `analyze` | `/improve-ack analyze` | Map tips to stages, create improvement plan |
+| `preview` | `/improve-ack preview "Title"` | Show proposed changes (no modifications) |
+| `apply` | `/improve-ack apply "Title"` | Apply tip to stages, mark implemented |
+| `quick-wins` | `/improve-ack quick-wins` | List low-effort, high-impact tips |
+
+**Analyze output:**
+- Stage impact matrix (which tips affect which stages)
+- Quick wins identification
+- Recommended implementation order
+- Complex items needing more planning
+
+**Apply process:**
+1. Finds tip in backlog
+2. Determines affected stages
+3. Proposes changes to README, templates, prompts
+4. Awaits approval before making changes
+5. Updates backlog status to implemented
+
+---
+
 ## Backlog Format
 
 ### YAML Frontmatter
@@ -165,7 +322,9 @@ Added during curation:
 
 1. `/backlog-stats` - Check health indicators
 2. `/curate-backlog stale` - Review old items
-3. Address any items >30 days without progress
+3. `/improve-ack analyze` - See what's ready to implement
+4. `/improve-ack quick-wins` - Pick an easy improvement
+5. `/improve-ack apply "Title"` - Implement it
 
 ### When Finding Good Content
 
@@ -177,7 +336,8 @@ Added during curation:
 
 1. `/backlog-stats by-category` - See what's available
 2. Pick from "quick wins" (low effort + high impact)
-3. `/curate-backlog implement "Title"` when done
+3. `/improve-ack preview "Title"` - See what would change
+4. `/improve-ack apply "Title"` - Apply the improvement
 
 ### Monthly
 
@@ -185,6 +345,7 @@ Added during curation:
 2. Apply recommended promotions/demotions
 3. Reject items that no longer apply
 4. Merge any duplicates found
+5. `/improve-ack analyze` - Plan next month's improvements
 
 ---
 
@@ -206,3 +367,83 @@ The changelog lives at the bottom of `tips.backlog.md` with newest entries first
 ```
 
 This provides a complete audit trail of all backlog changes.
+
+---
+
+## Project Maintenance
+
+Skills for keeping documentation accurate and repository organized.
+
+### `/doc-check [action] [category]`
+
+Check documentation accuracy and structure.
+
+**Actions:**
+
+| Action | Usage | Description |
+|--------|-------|-------------|
+| (default) | `/doc-check` | Full scan and report |
+| `scan` | `/doc-check scan` | Quick structural scan only |
+| `review` | `/doc-check review` | Deep accuracy review with suggestions |
+| `apply` | `/doc-check apply` | Apply approved changes |
+| `tech` | `/doc-check tech` | Check tech docs only |
+| `product` | `/doc-check product` | Check product docs only |
+| `user` | `/doc-check user` | Check user docs only |
+
+**Checks performed:**
+- Frontmatter compliance (type, version, updated, description)
+- Required sections present per doc type
+- Internal link verification
+- Staleness detection (based on configurable thresholds)
+- Source of truth comparison (for tech/user docs)
+
+**Workflow:**
+1. Run deterministic scan (`doc-health.py`)
+2. Analyze issues with agent reasoning
+3. Report findings with suggestions
+4. Apply fixes with user approval
+5. Record results to audit log
+
+---
+
+### `/repo-check [action]`
+
+Check repository structure against canonical layout.
+
+**Actions:**
+
+| Action | Usage | Description |
+|--------|-------|-------------|
+| (default) | `/repo-check` | Full scan and report |
+| `scan` | `/repo-check scan` | Quick check for violations |
+| `fix` | `/repo-check fix` | Interactive cleanup (move files) |
+| `rules` | `/repo-check rules` | Show current placement rules |
+
+**Checks performed:**
+- Files at root match allowed list
+- Docs in correct stage directories
+- Source code in `src/`
+- Tests in `tests/`
+- No orphaned files
+
+**Rules source:** `.claude/rules/repo-structure.md`
+
+**Workflow:**
+1. Run deterministic scan (`repo-structure.py`)
+2. Analyze violations with agent reasoning
+3. Report findings with move suggestions
+4. Fix with user approval (uses `git mv`)
+5. Record results to audit log
+
+---
+
+## Audit Logs
+
+Maintenance actions are logged to:
+
+| Log | Purpose |
+|-----|---------|
+| `.claude/logs/doc-maintenance.log` | Documentation check history |
+| `.claude/logs/repo-maintenance.log` | Repository structure check history |
+
+Log entries include timestamps, actions taken, files modified, and files skipped with reasons.
