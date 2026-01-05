@@ -1,7 +1,7 @@
 ---
 type: "guide"
 description: "ACK slash commands for stage workflow, backlog management, and maintenance"
-version: "1.2.0"
+version: "1.3.0"
 updated: "2025-01-04T00:00:00"
 ---
 
@@ -17,6 +17,7 @@ Slash commands for AI-assisted development workflows.
 |-------|---------|
 | `/review-stage` | Content analysis of stage deliverables |
 | `/validate-stage` | Structural check for stage completion |
+| `/advance-stage` | Move to next stage (validates first) |
 
 ### Backlog Management
 
@@ -106,6 +107,38 @@ Perform structural validation on stage deliverables.
 
 ---
 
+### `/advance-stage <to-stage>`
+
+Move to the next stage after validating current stage completion.
+
+**Target stages:** `design`, `setup`, `develop`
+
+**What it does:**
+
+1. Runs `/validate-stage` on current stage
+2. If PASS: moves deliverables to `docs/`
+3. Creates working directory for next stage
+4. Updates `.ack/state.json`
+
+**Transitions:**
+
+| Command | From → To | Moves to docs/ |
+|---------|-----------|----------------|
+| `/advance-stage design` | Discover → Design | brief.md |
+| `/advance-stage setup` | Design → Setup | architecture.md, data-model.md, stack.md |
+| `/advance-stage develop` | Setup → Develop | plan.md, tasks.md |
+
+**Special:** When advancing to Develop, offers to archive support artifacts.
+
+**Usage:**
+```bash
+/advance-stage design   # Move from Discover to Design
+/advance-stage setup    # Move from Design to Setup
+/advance-stage develop  # Move from Setup to Develop
+```
+
+---
+
 ### Stage Workflow Example
 
 ```bash
@@ -121,7 +154,8 @@ Perform structural validation on stage deliverables.
 #    → Must PASS to advance
 
 # 4. Move to Design stage
-#    (future: /advance-stage design)
+/advance-stage design
+#    → Moves brief.md to docs/, creates .ack/design/
 ```
 
 ---
