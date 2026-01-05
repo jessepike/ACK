@@ -1,7 +1,7 @@
 ---
 type: "guide"
 description: "ACK slash commands for stage workflow, backlog management, and maintenance"
-version: "1.3.0"
+version: "1.4.0"
 updated: "2025-01-04T00:00:00"
 ---
 
@@ -15,9 +15,11 @@ Slash commands for AI-assisted development workflows.
 
 | Skill | Purpose |
 |-------|---------|
+| `/init-project` | Initialize new ACK project structure |
 | `/review-stage` | Content analysis of stage deliverables |
 | `/validate-stage` | Structural check for stage completion |
 | `/advance-stage` | Move to next stage (validates first) |
+| `/archive-planning` | Archive support artifacts after Setup |
 
 ### Backlog Management
 
@@ -139,11 +141,74 @@ Move to the next stage after validating current stage completion.
 
 ---
 
+### `/init-project [name]`
+
+Initialize a new ACK project with working directory structure.
+
+**What it creates:**
+
+```
+.ack/
+├── discover/
+│   └── brief.md (template)
+└── state.json
+
+docs/
+└── (deliverables go here)
+```
+
+**Also:**
+- Updates `.gitignore` to ignore `.ack/` working files
+- Sets initial stage to "discover"
+- Copies brief template to get started
+
+**Usage:**
+```bash
+/init-project              # Use current directory name
+/init-project my-app       # Specify project name
+```
+
+---
+
+### `/archive-planning [action]`
+
+Archive support artifacts from planning stages.
+
+**When to use:** After advancing to Develop, to keep the repo clean.
+
+**Actions:**
+
+| Action | Description |
+|--------|-------------|
+| (default) | Interactive archive with confirmation |
+| `preview` | Show what would be archived |
+| `force` | Archive immediately |
+| `restore` | Restore files from archive |
+
+**What gets archived:**
+- Support artifacts (concept.md, research.md, validation.md, etc.)
+- NOT deliverables (those stay in `docs/`)
+
+**Archive location:** `~/.ack/archives/{project-name}/`
+
+**Usage:**
+```bash
+/archive-planning           # Interactive archive
+/archive-planning preview   # See what would be archived
+/archive-planning restore   # Restore from archive
+```
+
+---
+
 ### Stage Workflow Example
 
 ```bash
-# 1. Complete work on Discover stage deliverables
-#    (create brief.md)
+# 0. Initialize project
+/init-project my-app
+#    → Creates .ack/discover/, state.json, brief template
+
+# 1. Complete work on Discover stage
+#    (edit .ack/discover/brief.md)
 
 # 2. Review content quality
 /review-stage discover
@@ -156,6 +221,16 @@ Move to the next stage after validating current stage completion.
 # 4. Move to Design stage
 /advance-stage design
 #    → Moves brief.md to docs/, creates .ack/design/
+
+# 5. Continue through Design and Setup stages...
+
+# 6. When advancing to Develop
+/advance-stage develop
+#    → Offers to archive support artifacts
+
+# 7. Or archive manually later
+/archive-planning
+#    → Moves support files to ~/.ack/archives/my-app/
 ```
 
 ---
