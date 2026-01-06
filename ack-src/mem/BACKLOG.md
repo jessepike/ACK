@@ -1,8 +1,8 @@
 ---
 type: backlog
 description: "Memory System Backlog"
-version: 0.1.0
-updated: 2026-01-02
+version: 0.2.0
+updated: 2026-01-04
 status: active
 doc_id: mem-backlog-001
 title: "Memory System Backlog"
@@ -15,6 +15,78 @@ created: 2026-01-02
 ## Purpose
 
 Captured ideas and deferred decisions for the two-tier memory system.
+
+---
+
+## Tier-2 Implementation Queue
+
+Active implementation tracked in [TIER2_STATUS.md](./TIER2_STATUS.md).
+
+### Priority: CRITICAL
+
+#### Phase 2: Curation & Review Tools
+- **Spec:** [CURATION_SPEC.md](./tier2_kit/CURATION_SPEC.md)
+- **Blocks:** Phase 5 (Injection)
+- **Items:**
+  - [ ] Add `status` column to memories table
+  - [ ] Implement `claude-mem list --status`
+  - [ ] Implement `claude-mem promote <id>`
+  - [ ] Implement `claude-mem reject <id>`
+  - [ ] Build TUI browser (`claude-mem browse`)
+  - [ ] Add quality indicators (confidence, duplicates)
+  - [ ] Implement bulk operations with safety guards
+
+### Priority: HIGH
+
+#### Phase 3: ACK-Specific MCP Server
+- **Spec:** [MCP_SERVER_SPEC.md](./tier2_kit/MCP_SERVER_SPEC.md)
+- **Items:**
+  - [ ] Create MCP server project structure
+  - [ ] Implement `query_memories` tool
+  - [ ] Implement `get_memory` tool
+  - [ ] Implement `list_scopes` tool
+  - [ ] Implement `get_context` tool
+  - [ ] Register with Claude Code
+
+### Priority: MEDIUM
+
+#### Phase 4: Multi-Scope Architecture
+- **Spec:** See [tier2-memory-model.md](../docs/plans/tier2-memory-model.md)
+- **Items:**
+  - [ ] Design `~/.ack-mem/` structure
+  - [ ] Create scope management CLI
+  - [ ] Implement scope isolation (separate DBs)
+  - [ ] Add scope auto-detection from project path
+
+### Priority: LOW (After Curation Works)
+
+#### Phase 5: Enable Injection
+- [ ] Re-enable SessionStart hook
+- [ ] Configure to only inject APPROVED memories
+- [ ] Add injection controls (max tokens, recency filters)
+- [ ] Monitor for drift issues
+
+---
+
+## Tier-2 Future Enhancements
+
+### Promote-to-Tier-1 Workflow
+- Generate markdown drafts in `rules/learnings/`
+- Capture problem/solution pairs with tags
+- Track source memory for provenance
+- **Status:** Designed in CURATION_SPEC.md, implement after Phase 2
+
+### Memory Analytics
+- Most common tags/concepts
+- Learning trends over time
+- Session productivity metrics
+- **Status:** Deferred until stable data collection
+
+### AI-Assisted Review
+- Auto-approve high-confidence memories
+- Suggest duplicates during capture
+- Quality scoring refinement
+- **Status:** Evaluate after manual curation proves effective
 
 ---
 

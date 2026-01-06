@@ -1,10 +1,10 @@
 ---
-total_insights: 39
-high_priority: 22
+total_insights: 40
+high_priority: 23
 medium_priority: 17
 last_updated: 2026-01-04
 last_curated: 2026-01-04
-sources_count: 5
+sources_count: 6
 ---
 
 # Tips & Insights Backlog
@@ -16,6 +16,14 @@ Actionable insights extracted from external sources for ACK improvement.
 ---
 
 ## High Priority
+
+### [ARCHITECTURE] Artifact Governance System
+- **Source**: Internal planning session
+- **Added**: 2026-01-04
+- **Description**: Comprehensive artifact creation and validation system with config-driven scope (`.frontmatter.yaml`), `/create-artifact` skill, pre-commit validation hooks, and template migrations to match the frontmatter schema.
+- **Application**: Implement 5-phase plan: (1) Foundation config file, (2) Template migrations, (3) Pre-commit hooks, (4) /create-artifact skill with full workflow, (5) Artifact registry. See `docs/plans/artifact-governance.md` for full plan.
+- **Effort**: high | **Impact**: high
+- **Status**: backlog
 
 ### [WORKFLOW] Project Self-Onboarding via Init
 - **Source**: https://adocomplete.com/advent-of-claude-2025/
@@ -346,6 +354,11 @@ Actionable insights extracted from external sources for ACK improvement.
 ---
 
 ## Changelog
+
+### 2026-01-04
+- **Source**: Internal planning session
+- **Added**: 1 high priority (Artifact Governance System)
+- **Plan saved**: `docs/plans/artifact-governance.md`
 
 ### 2026-01-04 (Curation)
 - **Reviewed**: 7 oldest items (from adocomplete.com/advent-of-claude-2025/)

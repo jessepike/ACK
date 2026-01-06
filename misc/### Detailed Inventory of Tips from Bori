@@ -1,0 +1,48 @@
+### Detailed Inventory of Tips from Boris Cherny's Claude Code Workflow Thread
+
+Boris Cherny (@bcherny), the creator of Claude Code at Anthropic, shared a 13-part thread detailing his personal setup and best practices for using Claude Code (a terminal-based AI coding assistant). The thread emphasizes a "vanilla" approach with minimal customization, parallel workflows, team collaboration, and verification loops. Below is a comprehensive, numbered inventory of all the specific tips he provided:
+
+1. **Run multiple Claude sessions in parallel**  
+   Run 5 Claude CLI sessions simultaneously in numbered iTerm tabs (1-5). Configure macOS system notifications in iTerm 2 to alert when a session needs input, allowing seamless multitasking without constant monitoring.
+
+2. **Combine terminal, web, and mobile sessions**  
+   Run 5-10 additional Claude sessions in parallel on claude.ai/code in the browser. Hand off local terminal sessions to the web using backgrounding (`&`), manually start web sessions, or use --teleport to move sessions between terminal and web. Also start sessions from the Claude iOS app (e.g., in the morning) and check in later.
+
+3. **Prefer the strongest model for coding tasks**  
+   Use Opus 4.5 with "thinking" enabled for all tasks. Despite being larger and slower than Sonnet, it requires less steering, excels at tool use, and ends up being faster overall.
+
+4. **Maintain a shared, version-controlled documentation file**  
+   The team shares a single `INSTRUCTIONS.md` (or similar docs) for the Claude Code repo, checked into git. Everyone contributes multiple times a week. Add guidance whenever Claude makes a mistake to prevent recurrence. Different teams maintain their own docs.
+
+5. **Integrate Claude into code reviews**  
+   During PR reviews, tag @.claude on coworkers' pull requests to suggest additions to the shared docs. Use the Claude Code GitHub action for this process (inspired by "Compounding Engineering").
+
+6. **Leverage Plan mode for better execution**  
+   Start most sessions in Plan mode (shift+tab twice). Iterate on the plan until satisfied, then switch to auto-accept edits mode—Claude can often implement it in one shot. Emphasizes that a strong plan is crucial for success.
+
+7. **Create reusable slash commands for repetitive workflows**  
+   Define slash commands in `.claude/commands/` (checked into git) for frequent "inner loop" tasks. Examples include a `/commit-push-pr` command that uses inline bash to pre-compute git status and other info, reducing back-and-forth and enabling Claude to use the workflow itself.
+
+8. **Use subagents for common post-processing tasks**  
+   Employ subagents (e.g., `code-simplifier` to clean up code after main work, `verify-app` for end-to-end testing of Claude Code) to automate recurring workflows across most PRs.
+
+9. **Apply post-tool-use hooks for formatting**  
+   Use a PostToolUse hook to automatically format Claude's generated code, catching the "last 10%" of formatting issues to prevent CI failures.
+
+10. **Manage permissions proactively**  
+    Avoid `--dangerously-skip-permissions`. Instead, use `/permissions` to pre-allow safe, common bash commands. Store these in `.claude/settings.json` (shared with the team) to minimize permission prompts.
+
+11. **Enable Claude to use external tools autonomously**  
+    Configure tools like Slack (via MCP server for searching/posting), BigQuery (via bq CLI for analytics), and Sentry (for error logs). Share configurations (e.g., `.mcp.json`) team-wide so Claude handles these tasks independently.
+
+12. **Handle long-running tasks with verification and minimal interruptions**  
+    For extended tasks:  
+    - Prompt Claude to self-verify with a background agent.  
+    - Use an agent Stop hook for more reliable verification.  
+    - Employ the "ralph-wiggum" plugin.  
+    In sandboxes, use `--permission-mode=dontAsk` or `--dangerously-skip-permissions` to prevent blocking on prompts.
+
+13. **Prioritize verification feedback loops (most important tip)**  
+    Always give Claude a way to verify its own work—this can 2-3x the quality. Examples: Run bash commands, test suites, or UI testing via the Claude Chrome extension (which opens a browser, tests changes on claude.ai/code, and iterates). Invest in domain-specific, rock-solid verification methods.
+
+These tips focus on efficiency through parallelism, automation of repetitive tasks, team knowledge compounding, and robust self-verification. Cherny notes there's no single "correct" way to use Claude Code and encourages customization.
